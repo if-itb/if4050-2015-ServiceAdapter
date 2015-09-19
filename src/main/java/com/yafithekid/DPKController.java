@@ -49,13 +49,15 @@ public class DPKController {
                 return new ResponseEntity<Object>(responseKuliahNotFound(kd),HttpStatus.NOT_FOUND);
             }
 
-            //String daftarKuliah = String.format("https://six.akademik.itb.ac.id/publik/daftarkelas.php?ps=%s&semester=%s&tahun=%s&th_kur=%s", ps, semester, tahun, th_kur);
+            //String daftarKuliah = String.format("https://six.akademik.itb.ac.id/publik/daftarkelas.php?ps=%s&semester=%s&tahun=%s&th_kur=%s", ps, 1, 2015, 2013);
             Document doc = Jsoup.connect(daftarKuliah).get();
             Elements mataKuliahDom = doc.select("ol>li");
             //System.out.println(mataKuliahDom.html());
             boolean found = false;
             for(Element mataKuliah : mataKuliahDom){
-                if (mataKuliah.html().startsWith(kd)){
+                //System.out.println(mataKuliah.html().substring(0,6));
+                //System.out.println(mataKuliah.html());
+                if (mataKuliah.html().contains(kd)){
                     found = true;
                     Elements listKelas = mataKuliah.select("ul>li>a");
                     //System.out.println(listKelas);
@@ -213,7 +215,7 @@ public class DPKController {
             }
             Elements mataKuliahDom = doc.select("ol>li");
             for(Element mataKuliah : mataKuliahDom) {
-                if (mataKuliah.html().startsWith(kd)) {
+                if (mataKuliah.html().contains(kd)) {
                     this.isFound = true;
                 }
             }
@@ -242,8 +244,8 @@ public class DPKController {
 
     private String searchDaftarKuliah(String ps,String kd){
         List<IsDaftarKuliahContainsKodeTask> tasks = new ArrayList<>();
-        for(int semester = 2; semester >= 1; semester--){
-            for(int tahun = 2015; tahun >= 2013; tahun--){
+        for(int tahun = 2015; tahun >= 2013; tahun--){
+            for(int semester = 2; semester >= 1; semester--){
                 String daftarKuliah = String.format("https://six.akademik.itb.ac.id/publik/daftarkelas.php?ps=%s&semester=%s&tahun=%d&th_kur=%s", ps, semester, tahun, "2013");
                 IsDaftarKuliahContainsKodeTask task = new IsDaftarKuliahContainsKodeTask(daftarKuliah,kd,semester,tahun);
                 tasks.add(task);
@@ -262,7 +264,7 @@ public class DPKController {
         for(int i = 0; i < tasks.size();i++){
             IsDaftarKuliahContainsKodeTask task = tasks.get(i);
             if (task.isFound()){
-                System.out.println("Semester = "+task.getSemester()+" tahun = "+task.getTahun());
+                //System.out.println("Semester = "+task.getSemester()+" tahun = "+task.getTahun());
                 return task.getDaftarKuliah();
             }
         }
