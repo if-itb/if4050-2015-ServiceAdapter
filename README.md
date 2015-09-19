@@ -1,4 +1,6 @@
-# README for Service Adapter Assignment on IF4050 2015
+# README for Service AdapterAssignment on IF4050 2015
+
+Test
 
 Each participnats should indicate clearly the following data:
  * NIM      = 1[35|82]+XXYYY
