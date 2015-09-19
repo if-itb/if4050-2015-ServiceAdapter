@@ -1,7 +1,7 @@
 {
   "name": "six-adapter",
   "version": "1.0.0",
-  "description": "",
+  "description": "adapter to get current semester's DPK at six.akademik.itb.ac.id",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
