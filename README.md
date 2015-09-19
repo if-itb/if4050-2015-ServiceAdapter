@@ -6,15 +6,13 @@
 3. [When you are done OR the deadline] create pull request  
 
 Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 13512077
+ * Name     = Khoirunnisa Afifah
+ * GithubID = afik
 
 Requreiments:
- * ....
- * ....
- * 
-
+ * nodejs & npm
+ 
 How to Deploy
  1. .....
  2. .....
@@ -22,6 +20,10 @@ How to Deploy
  4. 
  
 How to Run
- 1. .....
- 2. .....
+ 1. npm install
+ 2. run node index.js
+ 3. call endpoint at `host/?ps=X&kode=Y&kelas=Z`
+ 	X = kode program studi (ex.135)
+ 	Y = kode mata kuliah (ex.IF4050)
+ 	Z = no kelas (ex.01)
  
