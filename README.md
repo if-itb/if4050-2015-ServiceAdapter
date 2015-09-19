@@ -1,27 +1,35 @@
 # README for Service Adapter Assignment on IF4050 2015
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
+ * NIM      = 13512076
+ * Name     = Ahmad Zaky
+ * GithubID = azaky
 
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+## Requirements:
 
-Requreiments:
- * ....
- * ....
- * 
+ * Node JS 4.0.0
 
-How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
- 
-How to Run
- 1. .....
- 2. .....
- 
+## How to Deploy
+
+ 1. Install the dependencies by executing `npm install`.
+ 2. Run the server with `node server.js`. The server can be accessed through `localhost:8080`.
+
+## How to Run
+
+ 1. The request will be in form `GET /?queryparams...`. The parameters are:
+    - `ps` is the study program code.
+    - `kode` is the course code.
+    - `kelas` is the class number.
+    - `tahun` is the year. If not specified, 2015 is assumed.
+    - `semester` is the semester. If not specified, 1 is assumed.
+ 2. For example, a full request might look like `GET /?ps=135&kode=IF4050&kelas=01`.
+ 3. The returned value will be JSON containing the class data. If no class was found or there are some errors, then the response will explain what is happening with the relevant error codes.
+
+## Execution Result
+
+Below is the result of successful request:
+
+![](https://raw.githubusercontent.com/azaky/if4050-2015-ServiceAdapter/master/screenshot/capture_200.png)
+
+Below is the result when no matching class is found:
+
+![](https://raw.githubusercontent.com/azaky/if4050-2015-ServiceAdapter/master/screenshot/capture_404.png)
