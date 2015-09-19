@@ -1,27 +1,23 @@
 # README for Service Adapter Assignment on IF4050 2015
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
+##Each participnats should indicate clearly the following data:
+ * NIM      = 13512043
+ * Name     = Aryya Dwisatya Widigdha
+ * GithubID = adwisatya
 
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+##Requreiments:
+ * Windows/Unix Operating System
+ * Web Server with PHP Module such as Apache, Nginx
+ * Codeigniter 2.0
 
-Requreiments:
- * ....
- * ....
- * 
+##How to Deploy
+ 1. Download master data from https://github.com/adwisatya/if4050-2015-ServiceAdapter/archive/master.zip
+ 2. Unzip archive in your web server directory
 
-How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
  
-How to Run
- 1. .....
- 2. .....
- 
+##How to Run
+ 1. Open your working directory using this following rule http://localhost/Services/index.php/crawler/show_dpk/{kode_jurusan}/{kode_mk}/{kode_kelas}
+ . Example: http://localhost/Services/index.php/crawler/show_dpk/135/IF4043/01
+
+##Executing Result
+!["Result"] (https://studentsvm0.itb.ac.id:443/home/a.dwisatya@students.itb.ac.id/files/postman_service.JPG "Executing Result")
