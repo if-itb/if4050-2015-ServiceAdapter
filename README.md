@@ -1,6 +1,6 @@
 # README for Service Adapter Assignment on IF4050 2015
-
-##Each participnats should indicate clearly the following data:
+Amateur DPK Crawler by Aryya Dwisatya W (http://bangsatya.com)
+##Student Informations:
  * NIM      = 13512043
  * Name     = Aryya Dwisatya Widigdha
  * GithubID = adwisatya
