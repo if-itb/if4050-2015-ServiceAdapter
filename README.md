@@ -1,27 +1,21 @@
-# README for Service Adapter Assignment on IF4050 2015
+# ITB Course Finder API
+![ITB Course Finder API](/../screenshoot/screenshoots/running.jpg?raw=true "ITB Course Finder API")
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
+ITB Course Finder API is an API for getting information about a course in ITB by its name and class number
 
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+## Usage
+This project is made by using Nodejs and Express. So you will need nodejs installed in your machine to run this project. To install express with npm, issue this command in project directory: 
+```
+npm install express
+```
+and to run this project, issue this command:
+```
+node akademik.js
+```
 
-Requreiments:
- * ....
- * ....
- * 
+## Execution and Result
+After the program has been started, request can be done by issuing `GET /?kode=[COURSE CODE]&kelas=[CLASS NUMBER]`.
 
-How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
- 
-How to Run
- 1. .....
- 2. .....
- 
+![ITB Course Finder API Result](/../screenshoot/screenshoots/result.jpg?raw=true "ITB Course Finder API Result")
+
+The datasheet that is used for JSON output can be found in: https://www.dropbox.com/s/40rrzscor0p4qsy/JSON.md?dl=0
