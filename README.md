@@ -16,10 +16,10 @@
 
  
 ##How to Run
- 1. Open your working directory using this following rule
- http://localhost/Services/index.php/crawler/show_dpk/{kode_jurusan}/{kode_mk}/{kode_kelas}
- Example:
- http://localhost/Services/index.php/crawler/show_dpk/135/IF4043/01
+ 1. Make URL like This
+ http://{hostname+working directory}index.php/crawler/show_dpk/{kode_jurusan}/{kode_mk}/{kode_kelas}
+ 2. Open using browser or REsT client
+ *Example: http://localhost/Services/index.php/crawler/show_dpk/135/IF4043/01
 
 ##Execution Result
 !["DPK Crawler Execution Result"] (http://server1.bangsatya.com/postman_service.JPG "DPK Crawler Execution Result")
