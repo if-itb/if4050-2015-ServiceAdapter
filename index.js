@@ -95,7 +95,7 @@ app.get('/', function (req, res) {
 				      	 		jsonArr.fakultas = arr[1];
 				      	 		jsonArr.prodi = arr[3];
 				      	 		jsonArr.semester = arr[4];
-				      	 		jsonArr.tahun = arr[5];
+				      	 		jsonArr.tahun = "20" + arr[5];
 				      	 		jsonArr.kode = arr[6];
 				      	 		jsonArr.mata_kuliah = arr[7];
 				      	 		jsonArr.sks = arr[8];
