@@ -23,3 +23,13 @@
     - `semester` is the semester. If not specified, 1 is assumed.
  2. For example, a full request might look like `GET /?ps=135&kode=IF4050&kelas=01`.
  3. The returned value will be JSON containing the class data. If no class was found or there are some errors, then the response will explain what is happening with the relevant error codes.
+
+## Execution Result
+
+Below is the result of successful request:
+
+![](https://raw.githubusercontent.com/azaky/if4050-2015-ServiceAdapter/master/screenshot/capture_200.png)
+
+Below is the result when no matching class is found:
+
+![](https://raw.githubusercontent.com/azaky/if4050-2015-ServiceAdapter/master/screenshot/capture_404.png)
