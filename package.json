@@ -1,0 +1,11 @@
+{
+  "name": "node-api",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^5.0.0-alpha.2",
+    "jquery": "^3.0.0-alpha1",
+    "jsdom": "^6.5.0",
+    "stringify-object": "^2.3.0"
+  }
+}
