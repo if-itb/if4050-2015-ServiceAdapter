@@ -29,8 +29,7 @@ var download = function (url, callback) {
 var server = app.listen(3000, function () {
 	var host = server.address().address;
 	var port = server.address().port;
-
-  console.log('App listening at http://%s:%s', host, port);
+	console.log('App listening at http://%s:%s', host, port);
 });
 
 app.get('/', function (req, res) {
@@ -66,8 +65,10 @@ app.get('/', function (req, res) {
 				}
 
 		      	if (!ada) {
-		      	 	console.error("kelas ga ketemu");
-		      	 	res.status(404).send("Tidak ditemukan kelas dengan kode : " + kd);
+		      	 	
+		      	 	console.log("kelas tidak ketemu");
+					
+					res.status(404).send("Tidak ditemukan kelas dengan kode " + kd);
 		      	} else {
 		      	 	class_url = base_url + class_links[(kls*2)-2];
 		      	 	console.log(class_url);
@@ -85,7 +86,10 @@ app.get('/', function (req, res) {
 		      	 			arr2 = data.match(regPesertaKelas);
 
 		      	 			if (arr.length == 0 || arr2.length == 0) {
-				      	 		console.error("error get dpk");
+				      	 		console.log("error downloading1");
+								var err = new Error();
+								err.status = 500;
+								throw err;
 				      	 	} else {
 
 				      	 		jsonArr.fakultas = arr[1];
@@ -111,29 +115,36 @@ app.get('/', function (req, res) {
 
 				      	 		jsonArr.peserta = peserta;
 
-				    //   	 		var temp1 = "";
-				    //   	 		for (var i = 1; i< arr.length; ++i) {
-				    //   	 			temp1 += i + ": " + arr[i] + "<br>";
-				    //   	 		}
-
 				      	 		res.status(200).send(JSON.stringify(jsonArr));
 				      	 	}
 		      	 		} else {
 		      	 			console.log("error downloading2");
+		      	 			var err = new Error();
+							err.status = 500;
+							throw err;
 		      	 		}
 		      	 	});
 				}
 			} else {
-				console.error("error downloading1");
+				console.log("error downloading1");
+				var err = new Error();
+				err.status = 500;
+				throw err;
 			}
 		});
 	} else {
-		res.status(400).send("Request tidak sesuai format");
+		var err = new Error();
+		err.status = 400;
+		throw err;
 	}
 
 });
 
-app.use(function(err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Terjadi kesalahan pada server');
+app.use(function(err, req, res) {
+	if (err.status == 400) {
+		res.status(400).send("Request tidak sesuai format");
+	} else {
+		console.error(err.stack);
+	  	res.status(500).send('Terjadi kesalahan pada server');
+	}
 });
