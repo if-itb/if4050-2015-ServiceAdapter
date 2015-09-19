@@ -1,9 +1,27 @@
-# CodeIgniter 2
-Open Source PHP Framework (originally from EllisLab)
+# README for Service Adapter Assignment on IF4050 2015
 
-For more info, please refer to the user-guide at http://www.codeigniter.com/userguide2/  
-(also available within the download package for offline use)
+##Instruction
+1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
+2. Work on your fork --> commit --> push [as many as you want]
+3. [When you are done OR the deadline] create pull request  
 
-**WARNING:** *CodeIgniter 2.x is no longer under development and only receives security patches until October 31st, 2015.
-Please update your installation to the latest CodeIgniter 3.x version available
-(upgrade instructions [here](http://www.codeigniter.com/userguide3/installation/upgrade_300.html)).*
+Each participnats should indicate clearly the following data:
+ * NIM      = 1[35|82]+XXYYY
+ * Name     = XXXXXXX
+ * GithubID = YYYY
+
+Requreiments:
+ * ....
+ * ....
+ * 
+
+How to Deploy
+ 1. .....
+ 2. .....
+ 3. .....
+ 4. 
+ 
+How to Run
+ 1. .....
+ 2. .....
+ 
