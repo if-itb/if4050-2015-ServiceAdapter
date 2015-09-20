@@ -9,6 +9,6 @@ package com.michaelaw320.dpkservice;
  *
  * @author michael
  */
-public class InputParser {
+public class OutputProcessor {
     
 }
