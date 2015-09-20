@@ -16,10 +16,6 @@ class HtmlController extends Controller
 {
     public function actionIndex()
     {
-        // regex semua: ([\w\W]+)\n+Program Studi\s*:\s*([\w\W]+)\n+Semester\s*:\s*(\d+)/(\d+)\n+Kode/Mata Kuliah*\s*:\s*(\w{6})\s*/\s*([\w|\W]+),\s*(\d)\s*SKS\n+No. Kelas/Dosen\s*:\s*(\d\d)\s*/\s*([\w|\W]+)\n+-*\n+[\w|\W]*\n+-*\n+([\s|\S]*)-\n+Total Peserta\s*=\s*(\d*)
-        // reges peserta: /\d{3}\s*(\d{8})\s*([\w|\W]*)/
-        $kodeKelasPattern = "/(\w{2}\d{4}) \(/";
-//        $linkPattern = "/kelas : <a href=\W([\w|\W]+)<\/\w>/";
             $html_model = new Html();
             if($link = $html_model->getLink('230','TK5001','01'))
                 echo $link;
@@ -27,18 +23,8 @@ class HtmlController extends Controller
                 echo 'not found ';
 
         $data = file_get_html($link);
-
-        //yang masih match
-        $dataPattern = '/([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s]*)[\n|\s]+-*[\n|\s]+[\w|\W]*[\n|\s]+-*[\n|\s]+([\s|\S]*)-[\n|\s]+Total Peserta\s*=\s*(\d*)/';
-
-//        $dataPattern = '/([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s]*)[\n|\s]+-*[\n|\s]+([\s\S]*)-+\n+Total Peserta = (\d+)/';
-
-        //zaky
-//        $dataPattern = '/([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s]*)[\n|\s]+-*[\n|\s]+([\s\S]*)-+\n+Total Peserta = (\d+)/g';
-
-        //me
         $dataPattern = '/([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s]*)[\n|\s]+-*[\n|\s]+([\w|\W]+)[\n|\s*]Total Peserta = (\d+)/';
-        //echo $data;
+
         if(preg_match_all($dataPattern,$data,$data_match))
         {
             echo 'count = '.count($data_match). '<br>';
@@ -79,12 +65,7 @@ class HtmlController extends Controller
                     {
                         echo $pesertaMatch[1][$i].' '.$pesertaMatch[2][$i].'<br>';
                     }
-//                    foreach ($pesertaMatch[1] as $nim) {
-//                        $nama = $pesertaMatch[2][1];
-//                        echo $nim.' '.$nama.'<br>';
-//                    }
                 }
-//                echo $element. '<br>';
             }
 
 //            print_r($data_match[10]).'<br>';
