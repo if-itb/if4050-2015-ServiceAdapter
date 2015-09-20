@@ -1,5 +1,3 @@
-//npm install express
-
 /* NIM : 13512018 */
 /* Nama : Tony */
 /* Github ID : TonyWijaya */
@@ -9,13 +7,14 @@ var express = require('express');
 var https = require('https');
 var app = express();
 
-
-// getting request
+// sending get request
 app.get('/', function (req, res) 
 {
   var ps = req.query.ps;
   var kode = req.query.kode;
   var kelas = req.query.kelas;
+  var semester = "1";
+  var tahun = 2015;
 
   if (kode == undefined || kode == undefined || kelas == undefined) { // request is not matched with format
   	var response = {};
@@ -23,8 +22,8 @@ app.get('/', function (req, res)
   	res.status(400).end(JSON.stringify(response));
   	console.log("Status Code: 400");
   }
-  else {
-  	var linkDaftarKelas = "https://six.akademik.itb.ac.id/publik/daftarkelas.php?" + "ps=" + ps + "&semester=1&tahun=2015&th_kur=2013";
+  else { // request is matched
+  	var linkDaftarKelas = "https://six.akademik.itb.ac.id/publik/daftarkelas.php?" + "ps=" + ps + "&semester=" + semester + "&tahun=" + tahun + "&th_kur=2013";
   	console.log("Connecting to " + linkDaftarKelas + ". . .");
 
   	https.get(linkDaftarKelas,function (res1) {
@@ -97,13 +96,14 @@ app.get('/', function (req, res)
 								result.peserta = allStudent;
 
 								// static information
-								result.semester = "1";
-								result.tahun = 2015;
+								result.semester = semester;
+								result.tahun = tahun;
 								result.kode = kode;
 								result.kelas = kelas;
 
 								res.end(JSON.stringify(result)); //show response
 								console.log("Status Code: 200");
+								console.log(result);
 							});
 
 						});
