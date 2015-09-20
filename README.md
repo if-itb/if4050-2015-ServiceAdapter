@@ -33,6 +33,9 @@ How to Run
  Execution Result
  
  Below is the successful request result:
+ https://github.com/ghaniruhman/if4050-2015-ServiceAdapter/blob/master/status-200.PNG
  
  Below is the result when there are no match:
+ https://github.com/ghaniruhman/if4050-2015-ServiceAdapter/blob/master/status-400.PNG
+ https://github.com/ghaniruhman/if4050-2015-ServiceAdapter/blob/master/status-404.PNG
  
