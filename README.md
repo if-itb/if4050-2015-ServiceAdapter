@@ -1,9 +1,9 @@
 # README for Service Adapter Assignment on IF4050 2015
 
-##Instruction
-NIM      = 18212006
-Name     = Nadhira Afriani
-GithubID = nadhiraafi
+##Personal Data
+* NIM      = 18212006
+* Name     = Nadhira Afriani
+* GithubID = nadhiraafi
 
 ##Requirements:
  * Node JS
