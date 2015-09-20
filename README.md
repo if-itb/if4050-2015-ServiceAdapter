@@ -1,27 +1,27 @@
 # README for Service Adapter Assignment on IF4050 2015
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
+ * NIM      = 13512067
+ * Name     = Muhammad Husain Jakfari
+ * GithubID = MuhammadHusain
 
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+## Requirements:
 
-Requreiments:
- * ....
- * ....
- * 
+ * Node JS 0.12.7
+ * Cheerio
+ * Express
 
-How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
- 
-How to Run
- 1. .....
- 2. .....
- 
+## How to Deploy
+
+ 1. Go to the root of project folder
+ 2. Build all dependencies (cheerio and express) with comand : `npm install <dependency name>`
+ 3. Run the server with type on terminal: `node myserver.js`. 
+ 4. The server can be accessed through `localhost:8080`.
+
+## How to Run
+
+ 1. The request will be in form `GET /api?queryparams...`. The parameters are:
+    - `ps` is the study program code.
+    - `mk` is the course code.
+    - `kelas` is the class number.
+ 2. For example, a full request might look like `GET /api?ps=135&mk=IF4050&kelas=01`.
+ 3. The returned value will be JSON format.
