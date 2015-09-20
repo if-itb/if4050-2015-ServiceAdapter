@@ -21,8 +21,13 @@ class HtmlController extends Controller
 //                echo $link;
 //            else
 //                echo 'not found ';
+        
+        $request = Yii::$app->request;
+        $ps = $request->get('ps');
+        $kode = $request->get('kode');
+        $kelas = $request->get('kelas');
 
-        $response = $html_model->getData('135','IF4050','01');
+        $response = $html_model->getData($ps,$kode,$kelas);
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return $response;
     }
