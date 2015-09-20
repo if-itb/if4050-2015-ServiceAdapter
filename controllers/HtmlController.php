@@ -22,7 +22,9 @@ class HtmlController extends Controller
 //            else
 //                echo 'not found ';
 
-            $html_model->getData('135','IF4050','01');
+        $response = $html_model->getData('135','IF4050','01');
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $response;
 //        $data = file_get_html($link);
 //        $dataPattern = '/([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s]*)[\n|\s]+-*[\n|\s]+([\w|\W]+)[\n|\s*]Total Peserta = (\d+)/';
 //
