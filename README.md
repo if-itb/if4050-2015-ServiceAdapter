@@ -1,27 +1,24 @@
 # README for Service Adapter Assignment on IF4050 2015
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
-
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
-
-Requreiments:
- * ....
- * ....
- * 
-
-How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+ * NIM      = 18212002
+ * Name     = Taufik Akbar Abdullah
+ * GithubID = taufika
  
-How to Run
- 1. .....
- 2. .....
+##Requreiments:
+ * Node JS
+
+##How to Deploy
+ 1. Open terminal on the .js file location
+ 2. Use npm install to install dependencies. To manually install dependencies, the following modules are needed:
+    a. httpdispatcher
+    b. htmlparser2
+ 3. Run the server with `node crawler.js` and access ith through `http://127.0.0.1:8880`
+ 
+##How to Run
+ 1. Server will accept GET request with format `GET /?ps=xx&kode=yy&kelas=zz` where:
+    a. ps = program code. If not specified, server will search from all program and take longer response time.
+    b. kode = subject code
+    c. kelas = class number
+ 2. For example full request will look like this `GET /?ps=135&kode=IF4050&kelas=01`
+ 3. The returned value will be a JSON containing the class data. Error in query or non existing class will return JSON containing error message and approriate HTTP status code.
  
