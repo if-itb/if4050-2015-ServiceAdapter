@@ -9,17 +9,18 @@ var path = '/publik/';
 var request = require('request');
 var cheerio = require('cheerio');
 
-var all = /([\w\W]+)\n+.*:\s*([\w\W]+)\n+.*:\s*(\d+)\/(\d+)\n+.*:\s*([\w]+)\s*\/\s*([\w\W]+),\s*(\d+)\s*SKS\n+.*:\s*(\d+)\s*\/\s*([\w\W]+)\n+-*\n+.*\n+-+\n+([\s\S]*)-+\n+Total Peserta = (\d+)/g;
-var allStudents = /\d+\s+(\w+)\s+(.*)/gm;
+var all = /(.*)\n+.*:\s+(.*)\n+.*:\s+(\d+)\/(\d+)\n+.*:\s+(.*)\s+\/\s+(.*),\s+(\d+)\s+SKS\n+.*:\s*(\d+)\s*\/\s+(.*)\n+-*\n+.*\n+-*\n+((.*\n)*)-+\n+Total Peserta = (\d+)/g;
+var allStudents = /\d+\s+(\d+)\s+(.*)/gm;
 
 function parser(dpk) {
 	var result = {};
 	var match = all.exec(dpk);
-	if (match == null) {
+	if (match === null) {
 		return {
 			error: "Error while parsing dpk"
 		};
 	} else {
+		console.log(match[12]);
 		result.fakultas = match[1];
 		result.prodi = match[2];
 		result.semester = match[3];
@@ -30,7 +31,7 @@ function parser(dpk) {
 		result.kelas = match[8];
 		result.dosen = match[9];
 		result.peserta = [];
-		result.jumlah_peserta = match[11];
+		result.jumlah_peserta = match[12];
 
 		var students = allStudents.exec(match[10]);
 		while (students !== null) {
@@ -67,7 +68,7 @@ router.get('/', function (req, res) {
 									$ = cheerio.load(html);
 									var dpk = $('pre').html();
 									var JSON = parser(dpk);
-									res.status(500).json(JSON);
+									res.status(200).json(JSON);
 								} else {
 									res.status(500).json(error);
 								}
