@@ -67,8 +67,10 @@ app.get('/', function (req, res) {
 		      	if (!ada) {
 		      	 	
 		      	 	console.log("kelas tidak ketemu");
-					
-					res.status(404).send("Tidak ditemukan kelas dengan kode " + kd);
+					var err = {
+						error : "Tidak ditemukan kelas dengan kode " + kd
+					};
+					res.status(404).send(JSON.stringify(err));
 		      	} else {
 		      	 	class_url = base_url + class_links[(kls*2)-2];
 		      	 	console.log(class_url);
@@ -87,9 +89,10 @@ app.get('/', function (req, res) {
 
 		      	 			if (arr.length == 0 || arr2.length == 0) {
 				      	 		console.log("error downloading1");
-								var err = new Error();
-								err.status = 500;
-								throw err;
+								var error = {
+									error : "Terjadi kesalahan pada server"
+								};
+								res.status(500).send(JSON.stringify(error));	
 				      	 	} else {
 
 				      	 		jsonArr.fakultas = arr[1];
@@ -119,32 +122,34 @@ app.get('/', function (req, res) {
 				      	 	}
 		      	 		} else {
 		      	 			console.log("error downloading2");
-		      	 			var err = new Error();
-							err.status = 500;
-							throw err;
-		      	 		}
+		      	 			var error = {
+								error : "Terjadi kesalahan pada server"
+							};
+							res.status(500).send(JSON.stringify(error));
+						}
 		      	 	});
 				}
 			} else {
 				console.log("error downloading1");
-				var err = new Error();
-				err.status = 500;
-				throw err;
+				var error = {
+					error : "Terjadi kesalahan pada server"
+				};
+				res.status(500).send(JSON.stringify(error));
 			}
 		});
 	} else {
-		var err = new Error();
-		err.status = 400;
-		throw err;
+		var error = {
+			error : "Request tidak sesuai format"
+		};
+		res.status(400).send(JSON.stringify(error));
 	}
 
 });
 
 app.use(function(err, req, res) {
-	if (err.status == 400) {
-		res.status(400).send("Request tidak sesuai format");
-	} else {
-		console.error(err.stack);
-	  	res.status(500).send('Terjadi kesalahan pada server');
-	}
+	console.error(err.stack);
+	var error = {
+		error : "Terjadi kesalahan pada server"
+	};
+	res.status(500).send(JSON.stringify(error));
 });
