@@ -89,7 +89,6 @@ class Html extends \yii\base\Object
                     $regexPeserta = '/\d{3}\s*(\d{8})\s*([a-z|A-Z|\s]+)/';
                     if(preg_match_all($regexPeserta, $element, $pesertaMatch))
                     {
-                        echo 'nama nama <br>';
                         $arrayPeserta = array();
                         for($i=0; $i<count($pesertaMatch[1]);$i++)
                         {
