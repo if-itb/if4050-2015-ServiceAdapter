@@ -7,7 +7,7 @@ Copyright (c) 2012 Justin Lucas
 Licensed under MIT License (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt)
 */
 
-require_once(BASE_DIR . '/application/libraries/Simple_html_dom.php');
+require_once(APPPATH . '/libraries/Simple_html_dom.php');
 
 class Crawler{
 	
