@@ -6,11 +6,11 @@
 3. [When you are done OR the deadline] create pull request  
 
 Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 13512036
+ * Name     = Riva Syafri Rachmatullah
+ * GithubID = rivasyafri
 
-Requreiments:
+Requirements:
  * ....
  * ....
  * 

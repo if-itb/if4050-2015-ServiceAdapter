@@ -9,10 +9,10 @@ var path = '/publik/';
 var request = require('request');
 var cheerio = require('cheerio');
 
-var all = /(.*)\n+.*:\s+(.*)\n+.*:\s+(\d+)\/(\d+)\n+.*:\s+(.*)\s+\/\s+(.*),\s+(\d+)\s+SKS\n+.*:\s*(\d+)\s*\/\s+(.*)\n+-*\n+.*\n+-*\n+((.*\n)*)-+\n+Total Peserta = (\d+)/g;
-var allStudents = /\d+\s+(\d+)\s+(.*)/gm;
-
 function parser(dpk) {
+	var all = /(.*)\n+.*:\s+(.*)\n+.*:\s+(\d+)\/(\d+)\n+.*:\s+(.*)\s+\/\s+(.*),\s+(\d+)\s+SKS\n+.*:\s*(\d+)\s*\/\s+(.*)\n+-*\n+.*\n+-*\n+((.*\n)*)-+\n+Total Peserta = (\d+)/g;
+	var allStudents = /\d+\s+(\d+)\s+(.*)/gm;
+
 	var result = {};
 	var match = all.exec(dpk);
 	if (match === null) {
@@ -20,7 +20,6 @@ function parser(dpk) {
 			error: "Error while parsing dpk"
 		};
 	} else {
-		console.log(match[12]);
 		result.fakultas = match[1];
 		result.prodi = match[2];
 		result.semester = match[3];
@@ -89,7 +88,9 @@ router.get('/', function (req, res) {
 					});
 				}
 			} else {
-				res.status(500).json(error);
+				res.status(500).json({
+					error: "Server error"
+				});
 			}
 		})
 	}
