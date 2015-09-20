@@ -17,25 +17,54 @@ class HtmlController extends Controller
     public function actionIndex()
     {
         // regex semua: ([\w\W]+)\n+Program Studi\s*:\s*([\w\W]+)\n+Semester\s*:\s*(\d+)/(\d+)\n+Kode/Mata Kuliah*\s*:\s*(\w{6})\s*/\s*([\w|\W]+),\s*(\d)\s*SKS\n+No. Kelas/Dosen\s*:\s*(\d\d)\s*/\s*([\w|\W]+)\n+-*\n+[\w|\W]*\n+-*\n+([\s|\S]*)-\n+Total Peserta\s*=\s*(\d*)
-        // reges peserta: \d{3}\s*(\d{8})\s*([\w|\W]*)\n
-        $html = file_get_html('https://six.akademik.itb.ac.id/publik/daftarkelas.php?ps=230&semester=1&tahun=2015&th_kur=2013');
+        // reges peserta: /\d{3}\s*(\d{8})\s*([\w|\W]*)/
         $kodeKelasPattern = "/(\w{2}\d{4}) \(/";
 //        $linkPattern = "/kelas : <a href=\W([\w|\W]+)<\/\w>/";
-        if(preg_match_all($kodeKelasPattern, $html, $classMatch))
-        {
             $html_model = new Html();
-            if($link = $html_model->getLink('230','TK5001','02'))
+            if($link = $html_model->getLink('230','TK5001','01'))
                 echo $link;
             else
                 echo 'not found ';
+
+        $data = file_get_html($link);
+
+        //yang masih match
+        $dataPattern = '/([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s]*)[\n|\s]+-*[\n|\s]+[\w|\W]*[\n|\s]+-*[\n|\s]+([\s|\S]*)-[\n|\s]+Total Peserta\s*=\s*(\d*)/';
+
+//        $dataPattern = '/([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s]*)[\n|\s]+-*[\n|\s]+([\s\S]*)-+\n+Total Peserta = (\d+)/';
+
+        //zaky
+//        $dataPattern = '/([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s]*)[\n|\s]+-*[\n|\s]+([\s\S]*)-+\n+Total Peserta = (\d+)/g';
+
+        //me
+        $dataPattern = '/([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s]*)[\n|\s]+-*[\n|\s]+([\w|\W]+)[\n|\s*]Total Peserta = (\d+)/';
+        //echo $data;
+        if(preg_match_all($dataPattern,$data,$data_match))
+        {
+            echo 'count = '.count($data_match). '<br>';
+            print_r($data_match[1]).'<br>';
+            print_r($data_match[2]).'<br>';
+            print_r($data_match[3]).'<br>';
+            print_r($data_match[4]).'<br>';
+            print_r($data_match[5]).'<br>';
+            print_r($data_match[6]).'<br>';
+            print_r($data_match[7]).'<br>';
+            print_r($data_match[8]).'<br>';
+            print_r($data_match[9]).'<br>';
+            print_r($data_match[10]).'<br>';
+            print_r($data_match[11]).'<br>';
         }
+        else
+        {
+            echo 'not match';
+        }
+        //echo $data;
+
+
         // Lets write a regular expression to extract the day of month in
 // a string with numerous dates
-        $pattern = "/\d{3}\s*(\d{8})\s*([\w|\W]*)/";
-        $input_str = "001 11211039   Khalilan Lambangsari
-002 21113043   Kartika Fandika
-003 21115023   Riesa Khairunnisa Wira Rohmat
-004 21115024   Muhammad Maulana Malikul Ikram";
+        $pattern = "/[a-zA-Z]+ (\d+)/";
+        $input_str = "June 24, August 13, and December 30";
         if (preg_match_all($pattern, $input_str, $matches_out)) {
             // $matches_out is now an Array of size equal to N+1, for N
             // number of groups you are capturing in your regex, and +1
@@ -54,13 +83,13 @@ class HtmlController extends Controller
             // input string.
 
             // This prints an Array ("June 24", "August 13", "December 30")
-//            print_r($matches_out[0]);
-
+            print_r($matches_out[0]);
+            echo '<br>';
             // $matches_out[1], $matches_out[2], etc. are Arrays filled with
             // the captured data in the same order as in the regex pattern.
 
             // This prints an Array ("24", "13", "30")
-//            print_r($matches_out[1]);
+            print_r($matches_out[1]);
         }
 //        echo $removedFirst = $this->stripFirstLine($input_str).'<br>';
 //        echo $this->stripFirstLine($removedFirst);
