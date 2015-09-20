@@ -42,17 +42,55 @@ class HtmlController extends Controller
         if(preg_match_all($dataPattern,$data,$data_match))
         {
             echo 'count = '.count($data_match). '<br>';
-            print_r($data_match[1]).'<br>';
-            print_r($data_match[2]).'<br>';
-            print_r($data_match[3]).'<br>';
-            print_r($data_match[4]).'<br>';
-            print_r($data_match[5]).'<br>';
-            print_r($data_match[6]).'<br>';
-            print_r($data_match[7]).'<br>';
-            print_r($data_match[8]).'<br>';
-            print_r($data_match[9]).'<br>';
-            print_r($data_match[10]).'<br>';
-            print_r($data_match[11]).'<br>';
+            foreach($data_match[1] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[1]).'<br>';
+            foreach($data_match[2] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[2]).'<br>';
+            foreach($data_match[3] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[3]).'<br>';
+            foreach($data_match[4] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[4]).'<br>';
+            foreach($data_match[5] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[5]).'<br>';
+            foreach($data_match[6] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[6]).'<br>';
+            foreach($data_match[7] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[7]).'<br>';
+            foreach($data_match[8] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[8]).'<br>';
+            foreach($data_match[9] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[9]).'<br>';
+            foreach($data_match[10] as $element)
+            {
+                $regexPeserta = '/\d{3}\s*(\d{8})\s*([a-z|A-Z|\s]+)/';
+                if(preg_match_all($regexPeserta, $element, $pesertaMatch))
+                {
+                    echo 'nama nama <br>';
+                    for($i=0; $i<count($pesertaMatch[1]);$i++)
+                    {
+                        echo $pesertaMatch[1][$i].' '.$pesertaMatch[2][$i].'<br>';
+                    }
+//                    foreach ($pesertaMatch[1] as $nim) {
+//                        $nama = $pesertaMatch[2][1];
+//                        echo $nim.' '.$nama.'<br>';
+//                    }
+                }
+//                echo $element. '<br>';
+            }
+
+//            print_r($data_match[10]).'<br>';
+            foreach($data_match[11] as $element)
+                echo $element. '<br>';
+//            print_r($data_match[11]).'<br>';
         }
         else
         {
@@ -83,13 +121,13 @@ class HtmlController extends Controller
             // input string.
 
             // This prints an Array ("June 24", "August 13", "December 30")
-            print_r($matches_out[0]);
-            echo '<br>';
+//            print_r($matches_out[0]);
+//            echo '<br>';
             // $matches_out[1], $matches_out[2], etc. are Arrays filled with
             // the captured data in the same order as in the regex pattern.
 
             // This prints an Array ("24", "13", "30")
-            print_r($matches_out[1]);
+//            print_r($matches_out[1]);
         }
 //        echo $removedFirst = $this->stripFirstLine($input_str).'<br>';
 //        echo $this->stripFirstLine($removedFirst);
