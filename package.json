@@ -1,0 +1,26 @@
+{
+  "name": "courstdfinder",
+  "version": "1.0.0",
+  "description": "ITB List of Class Participant Finder",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "express": "^4.13.3",
+    "fs": "0.0.2",
+    "request": "^2.62.0",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "ghaniruhman"
+  },
+  "keywords": [
+    "itb"
+  ],
+  "author": "ghaniruhman",
+  "license": "ISC"
+}
