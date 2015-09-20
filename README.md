@@ -21,3 +21,6 @@
    - tahun : year (default: 2015)
    - sem : semester (default: 1)
 2. The response will be in a JSON file.
+
+###Example of Execution Result
+https://raw.githubusercontent.com/fhals/if4050-2015-ServiceAdapter/master/screenshots/screenshot.png
