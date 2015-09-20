@@ -23,68 +23,12 @@ class HtmlController extends Controller
 //        $linkPattern = "/kelas : <a href=\W([\w|\W]+)<\/\w>/";
         if(preg_match_all($kodeKelasPattern, $html, $classMatch))
         {
-            /* masih error indexingnya */
-            $classIdx = array_search("TK5101",$classMatch[1]);
-            $idx = 0;
-//            foreach($html->find('li a') as $element) {
-////                echo $element. '<br>';
-//                echo $element->innertext.'<br>';
-//                if($element->innertext === '01')
-//                {
-//                    $idx++;
-//                }
-//                if($idx == $classIdx)
-//                {
-//                    echo $element->href;
-//                }
-////                echo 'children0 = ' . $element->children(0)->outertext . '<br>';
-////                echo 'children1 = ' . $element->children(1)->outertext . '<br>';
-//            }
-
-            /* get link final */
-//            foreach ($html->find('li') as $element) {
-////                echo $element.'<br>';
-////                echo substr($element,4,6).'<br>';
-//                if(substr($element,4,6) === "TK5102")
-//                {
-//                    $daftarKelas = str_get_html($element->children(0)->innertext);
-//                    foreach($daftarKelas->find('li a') as $element)
-//                    {
-//                        if($element->innertext === '01')
-//                            $link = echo 'https://six.akademik.itb.ac.id/publik/'.$element->href.'<br>';
-//                    }
-//                }
-//            }
-
-
-//            $kelas = file_get_html($link)
             $html_model = new Html();
             if($link = $html_model->getLink('230','TK5001','02'))
                 echo $link;
             else
                 echo 'not found ';
-
-
-//            foreach($html->find('a') as $element)
-//                echo $element->href . '<br>';
-//            echo "jumlahLink = ".count($html->find('a')) . '<br>';
-//            echo "jumlahKelas = ".count($classMatch[1]);
-//            print_r ($linkMatch[1]);
-//
-            //print_r($match[1]);
-//            echo "<br>";
-//            echo array_search("TK5060",$classMatch[1]);
-//            echo array_values();
         }
-//        foreach($html->find('a') as $element)
-//            echo "https://six.akademik.itb.ac.id/publik/".$element->href . '<br>';
-//        foreach($html->find('pre') as $element)
-//        {
-//            echo $element . '<br>';
-//            echo "=======================================================================";
-//        }
-        //echo $html;
-
         // Lets write a regular expression to extract the day of month in
 // a string with numerous dates
         $pattern = "/\d{3}\s*(\d{8})\s*([\w|\W]*)/";
