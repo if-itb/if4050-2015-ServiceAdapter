@@ -30,6 +30,6 @@
 
 2. For example, a full request might look like 
 
-		`GET /?ps=135&kode=IF4050&kelas=01`.
+		`GET /dpk?ps=135&kode=IF4050&kelas=01`.
 
 3. The returned value will be JSON containing the data. If there are some errors, then the response will explain what is happening relevant to error codes.
