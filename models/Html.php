@@ -44,68 +44,77 @@ class Html extends \yii\base\Object
 
     public function getData($ps, $kode, $kelas)
     {
-        $data = file_get_html($this->getLink($ps, $kode, $kelas));
-        $dataPattern = '/<pre>([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s|.|\']*)[\n|\s]+-*[\n|\s]+([\w|\W]+)[\n|\s*]Total Peserta = (\d+)/';
+        $link = $this->getLink($ps, $kode, $kelas);
 
-        echo $data;
-        if(preg_match_all($dataPattern,$data,$data_match))
+        if($link)
         {
-//            return $data_match;
-            foreach($data_match[1] as $element)
-                $result["fakultas"] = $element;
-//            print_r($data_match[1]).'<br>';
-            foreach($data_match[2] as $element)
-                $result["prodi"] = $element;
-//            print_r($data_match[2]).'<br>';
-            foreach($data_match[3] as $element)
-                $result["semester"] = $element;
-//            print_r($data_match[3]).'<br>';
-            foreach($data_match[4] as $element)
-                $result["tahun"] = '20'.$element;
-//            print_r($data_match[4]).'<br>';
-            foreach($data_match[5] as $element)
-                $result["kode"] = $element;
-//            print_r($data_match[5]).'<br>';
-            foreach($data_match[6] as $element)
-                $result["mata_kuliah"] = $element;
-//            print_r($data_match[6]).'<br>';
-            foreach($data_match[7] as $element)
-                $result["sks"] = $element;
-//            print_r($data_match[7]).'<br>';
-            foreach($data_match[8] as $element)
-                $result["kelas"] = $element;
-//            print_r($data_match[8]).'<br>';
-            foreach($data_match[9] as $element)
-                $result["dosen"] = $element;
-//            print_r($data_match[9]).'<br>';
-            foreach($data_match[11] as $element)
-                $result["jumlah_peserta"] = $element;
-//            print_r($data_match[11]).'<br>';
-            $result["peserta"] = array();
-            foreach($data_match[10] as $element)
+            $data = file_get_html($link);
+            $dataPattern = '/<pre>([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s|.|\']*)[\n|\s]+-*[\n|\s]+([\w|\W]+)[\n|\s*]Total Peserta = (\d+)/';
+            if(preg_match_all($dataPattern,$data,$data_match))
             {
-                $regexPeserta = '/\d{3}\s*(\d{8})\s*([a-z|A-Z|\s]+)/';
-                if(preg_match_all($regexPeserta, $element, $pesertaMatch))
+//            return $data_match;
+                foreach($data_match[1] as $element)
+                    $result["fakultas"] = $element;
+//            print_r($data_match[1]).'<br>';
+                foreach($data_match[2] as $element)
+                    $result["prodi"] = $element;
+//            print_r($data_match[2]).'<br>';
+                foreach($data_match[3] as $element)
+                    $result["semester"] = $element;
+//            print_r($data_match[3]).'<br>';
+                foreach($data_match[4] as $element)
+                    $result["tahun"] = '20'.$element;
+//            print_r($data_match[4]).'<br>';
+                foreach($data_match[5] as $element)
+                    $result["kode"] = $element;
+//            print_r($data_match[5]).'<br>';
+                foreach($data_match[6] as $element)
+                    $result["mata_kuliah"] = $element;
+//            print_r($data_match[6]).'<br>';
+                foreach($data_match[7] as $element)
+                    $result["sks"] = $element;
+//            print_r($data_match[7]).'<br>';
+                foreach($data_match[8] as $element)
+                    $result["kelas"] = $element;
+//            print_r($data_match[8]).'<br>';
+                foreach($data_match[9] as $element)
+                    $result["dosen"] = $element;
+//            print_r($data_match[9]).'<br>';
+                foreach($data_match[11] as $element)
+                    $result["jumlah_peserta"] = $element;
+//            print_r($data_match[11]).'<br>';
+                $result["peserta"] = array();
+                foreach($data_match[10] as $element)
                 {
-                    echo 'nama nama <br>';
-                    $arrayPeserta = array();
-                    for($i=0; $i<count($pesertaMatch[1]);$i++)
+                    $regexPeserta = '/\d{3}\s*(\d{8})\s*([a-z|A-Z|\s]+)/';
+                    if(preg_match_all($regexPeserta, $element, $pesertaMatch))
                     {
-                        $arrayPeserta["nim"] = $pesertaMatch[1][$i];
-                        $arrayPeserta["nama"] = $pesertaMatch[2][$i];
-                        array_push($result["peserta"],$arrayPeserta);
+                        echo 'nama nama <br>';
+                        $arrayPeserta = array();
+                        for($i=0; $i<count($pesertaMatch[1]);$i++)
+                        {
+                            $arrayPeserta["nim"] = $pesertaMatch[1][$i];
+                            $arrayPeserta["nama"] = $pesertaMatch[2][$i];
+                            array_push($result["peserta"],$arrayPeserta);
 //                        echo $pesertaMatch[1][$i].' '.$pesertaMatch[2][$i].'<br>';
+                        }
                     }
                 }
-            }
 
 //            print_r($data_match[10]).'<br>';
-            return $result;
+                return $result;
+            }
+            else
+            {
+                //kesalahan sistem
+                $error["error"] = 'Terjadi kesalahan pada server';
+                return $error;
+            }
         }
         else
         {
-            //kesalahan sistem
-            return false;
+            $error['error'] = "Tidak ditemukan kelas dengan input ps = ".$ps.", kode ".$kode.", dan kelas ".$kelas;
+            return $error;
         }
     }
 }
