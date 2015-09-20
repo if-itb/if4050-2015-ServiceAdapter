@@ -10,5 +10,5 @@
  2. express.js installed -> <code> npm install express</code>
 
 # How to Run
- 1. <code> node coursefinder.js </code>
+ 1. Run this command at project directory terminal -> <code> node coursefinder.js </code>
  2. Send request at related port (3000) in the browser.  E.g: http://localhost:3000/?ps=135&kode=IF4050&kelas=01
