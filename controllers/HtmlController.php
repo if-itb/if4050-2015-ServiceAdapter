@@ -27,8 +27,17 @@ class HtmlController extends Controller
         $kode = $request->get('kode');
         $kelas = $request->get('kelas');
 
-        $response = $html_model->getData($ps,$kode,$kelas);
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        if(!isset($ps) || !isset($kode) || !isset($kelas))
+        {
+            \Yii::$app->response->statusCode = 400;
+            $response["error"] = 'Request tidak sesuai format';
+        }
+        else
+        {
+            $response = $html_model->getData($ps,$kode,$kelas);
+        }
         return $response;
     }
 }

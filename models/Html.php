@@ -107,13 +107,15 @@ class Html extends \yii\base\Object
             else
             {
                 //kesalahan sistem
+                \Yii::$app->response->statusCode = 500;
                 $error["error"] = 'Terjadi kesalahan pada server';
                 return $error;
             }
         }
         else
         {
-            $error['error'] = "Tidak ditemukan kelas dengan input ps = ".$ps.", kode ".$kode.", dan kelas ".$kelas;
+            \Yii::$app->response->statusCode = 404;
+            $error['error'] = "Tidak ditemukan kelas dengan input ps = ".$ps.", kode = ".$kode.", dan kelas = ".$kelas;
             return $error;
         }
     }
