@@ -18,9 +18,6 @@ class Html extends \yii\base\Object
     public function getLink($ps, $kode, $kelas)
     {
         $html = file_get_html('https://six.akademik.itb.ac.id/publik/daftarkelas.php?ps='.$ps.'&semester=1&tahun=2015&th_kur=2013');
-        $kodeKelasPattern = "/(\w{2}\d{4}) \(/";
-        if(preg_match_all($kodeKelasPattern, $html, $classMatch))
-        {
             /* get link final */
             $link = null;
             foreach ($html->find('li') as $element) {
@@ -43,12 +40,11 @@ class Html extends \yii\base\Object
                 return $link;
             else
                 return false;
-        }
     }
 
-    public function getData($kodeKelasPattern, $html, $classMatch)
+    public function getData($ps, $kode, $kelas)
     {
-        $data = file_get_html($this->getLink($kodeKelasPattern, $html, $classMatch));
+        $data = file_get_html($this->getLink($ps, $kode, $kelas));
         $dataPattern = '/<pre>([\w\W]+)[\n|\s]+Program Studi\s*:\s*([\w\W]+)[\n|\s]+Semester\s*:\s*(\d+)\/(\d+)[\n|\s]+Kode\/Mata Kuliah*\s*:\s*(\w{6})\s*\/\s*([\w|\W]+),\s*(\d)\s*SKS[\n|\s]+No. Kelas\/Dosen\s*:\s*(\d\d)\s*\/\s*([\w|\s|.|\']*)[\n|\s]+-*[\n|\s]+([\w|\W]+)[\n|\s*]Total Peserta = (\d+)/';
 
         echo $data;
@@ -108,7 +104,8 @@ class Html extends \yii\base\Object
         }
         else
         {
-            echo 'not match';
+            //kesalahan sistem
+            return false;
         }
     }
 }
