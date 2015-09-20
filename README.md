@@ -6,22 +6,33 @@
 3. [When you are done OR the deadline] create pull request  
 
 Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 18212035
+ * Name     = Ghani Ruhman
+ * GithubID = ghaniruhman
 
-Requreiments:
- * ....
- * ....
+Requirements:
+ * Node JS 4.0.0
  * 
-
+ *
+ 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
+ 1. install dependencies by using "npm install" command
+ 2. run index.js
+ 3. access it through localhost:8081
  4. 
  
 How to Run
- 1. .....
- 2. .....
+ 1. The required parameters are:
+     - 'ps': major code
+     - 'kode': course code
+     - 'kelas': class number
+     tahun (year) and semester has its own default number
+ 2. Example of a full request: localhost:8081/?ps=135&kode=IF4050&kelas=01
+ 3. The result of the request will be in a form of JSON
+ 
+ Execution Result
+ 
+ Below is the successful request result:
+ 
+ Below is the result when there are no match:
  
