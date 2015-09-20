@@ -53,6 +53,8 @@ public class GetdpkResource {
                     return Response.status(404).entity(retval).build();
                 } else {
                     //Transform dokumen jadi JSON
+                    OutputProcessor processor = new OutputProcessor(retval);
+                    retval = processor.createOutputJSON();
                     return Response.status(200).entity(retval).build();
                 }
             } else {
