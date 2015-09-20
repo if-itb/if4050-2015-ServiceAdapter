@@ -4,8 +4,41 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1e5eb46f0872053b4b15bbb2fffe3fcc",
+    "hash": "25351eac65c898337319a1d0aa1f13d5",
     "packages": [
+        {
+            "name": "mmerian/phpcrawl",
+            "version": "0.8.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mmerian/phpcrawl.git",
+                "reference": "d9c84beeaaa666b5910a6005db689a74cb6894b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mmerian/phpcrawl/zipball/d9c84beeaaa666b5910a6005db689a74cb6894b0",
+                "reference": "d9c84beeaaa666b5910a6005db689a74cb6894b0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "libs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-v2"
+            ],
+            "authors": [
+                {
+                    "name": "Uwe Hunfeld",
+                    "email": "phpcrawl@cuab.de"
+                }
+            ],
+            "description": "PHPCrawl is a webcrawler/webspider-library written in PHP. It supports filters, limiters, cookie-handling, robots.txt-handling, multiprocessing and much more.",
+            "time": "2015-01-31 11:00:11"
+        },
         {
             "name": "slim/slim",
             "version": "2.6.2",
