@@ -1,0 +1,12 @@
+{
+  "name"         : "IF4050-Service-Adapter",
+  "version"      : "0.0.1",
+  "description"  : "Scrape the DPK from six.akademik.itb.ac.id",
+  "main"         : "server.js",
+  "author"       : "Joshua Bezaleel Abednego",
+  "dependencies" : {
+    "express"    : "latest",
+    "request"    : "latest",
+    "cheerio"    : "latest"
+  }
+}
