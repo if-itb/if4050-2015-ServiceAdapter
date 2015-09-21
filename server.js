@@ -10,9 +10,9 @@ const port = 2121;
 
 //https://six.akademik.itb.ac.id/publik/daftarkelas.php?ps=332&semester=1&tahun=2015&th_kur=2013
 apps.get('/', function(req, res){
-	var matkul = request.query.mk;
-	var kelas = request.query.kelas;
-	var prodi = request.query.ps;
+	var matkul = req.query.mk;
+	var kelas = req.query.kelas;
+	var prodi = req.query.ps;
 
 	if (matkul === undefined || kelas === undefined || prodi === undefined)
 		res.status(400).json({
@@ -33,7 +33,7 @@ apps.get('/', function(req, res){
 				html_res += d;
 			}).on('end', function(d){
 				html_res += d;
-				$ = cheerio.load(html);
+				$ = cheerio.load(html_res);
 				if ($('li').html() === null){
 					res.status(404).json({
 						error: "Tidak ditemukan Prodi dengan nomor "+prodi
@@ -60,24 +60,71 @@ apps.get('/', function(req, res){
 								path: '/publik/'+no_kelas
 							};
 
-							https.get(options2, function(res){
-								res.on('data', function(dat){
-									links += dat;
+							https.get(options2, function(resd){
+								resd.on('data', function(dat){
+									html_res2 += dat;
 								}).on('end',function(dat){
-									links += dat;
+									html_res2 += dat;
 									$ = cheerio.load(links);
 									var dpk = $('pre').html();
 									var data = parsing_dpk(dpk);
-									if (data.error)
+									if (data.error !== undefined){
+										res.status(500).json(data);
+									} else {
+										res.status(200).json(data);
+									}
+								});
+							}).on('error', function(e){
+								res.status(500).json({
+									error: "Terjadi kesalahan pada server" 
 								});
 							});
 						}
 					}
 				}
 			});
+		}).on('error', function(e) {
+			res.status(500).json({
+				error: "Terjadi kesalahan pada server"
+			});
 		});
 	}
 });
+
+function parsing_dpk(dpk) {
+		var result = {};
+		var REGEX_ALL = /(.*)\n.*:\s(.*)\n.*:\s+(\d+)\/(\d+)\n\n.*:(.*)\s+\/\s+(.*),\s+(\d+)\s+SKS\n.*:\s+(\d+)\s+\/\s+(.*)\n\n-+\n.*\n-+\n((.*\n)*)-+\nTotal Peserta = (\d+)/g
+		var REGEX_PESERTA_KELAS = /\d+\s+(\d+)\s+(.*)/gm;
+		
+		var hasil = REGEX_ALL.exec(dpk);
+		if (hasil == null) {
+			return {
+				error: "Error while parsing dpk"
+			};
+		} else {
+			result.fakultas = hasil[1];
+			result.prodi = hasil[2];
+			result.semester = hasil[3];
+			result.tahun = 2000 + parseInt(hasil[4]);
+			result.kode = hasil[5];
+			result.mata_kuliah = hasil[6];
+			result.sks = hasil[7];
+			result.kelas = hasil[8];
+			result.dosen = hasil[9];
+			result.peserta = [];
+			result.jumlah_peserta = hasil[12];
+
+			var matchPesertaKelas = REGEX_PESERTA_KELAS.exec(hasil[10]);
+			while (matchPesertaKelas !== null) {
+				result.peserta.push({
+					nim: matchPesertaKelas[1],
+					nama: matchPesertaKelas[2].trim()
+				});
+				matchPesertaKelas = REGEX_PESERTA_KELAS.exec(hasil[10]);
+			}
+			return result;
+		}
+}
 
 apps.listen(port, function(){
 	console.log ("Server starting @ http://localhost:%s", port);
