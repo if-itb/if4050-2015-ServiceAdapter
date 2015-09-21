@@ -21,5 +21,5 @@ How to Deploy
  
 How to Run
  1. open the browser
- 2. Open this address (http://localhost:8000/api/peserta?ps={ps}&kode={kode}), where {ps} = first 3 character of NIM and {kode} = course code
+ 2. Open this address (http://localhost:8000/api/peserta?ps={ps}&kode={kode}&kelas={class}), where {ps} = first 3 character of NIM, {kode} = course code and {class} = class number.
  
