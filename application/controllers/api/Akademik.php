@@ -10,7 +10,6 @@ class Akademik extends REST_Controller {
 		parent::__construct();
 	}
 	
-	
 	public function dpk_get()
 	{
 		$ps = $this->get('ps');
@@ -19,12 +18,9 @@ class Akademik extends REST_Controller {
 		
 		if($ps)
 		{
-			$aink = $this->getKelas($ps, $kode, $kelas);
+			$dataDpk = $this->getDpk($ps, $kode, $kelas);
 			
-			$this->response([
-				'fakultas' => 'Sekolah Teknik Elektro dan Informatika',
-				'prodi' => $aink
-			], REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+			$this->response($dataDpk, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
 		}
 		else{
 			$this->response([
@@ -34,19 +30,66 @@ class Akademik extends REST_Controller {
 		}
 	}
 	
-	public function getKelas($ps, $kode, $kelas)
+	public function getDpk($ps, $kode, $kelas)
 	{
-		$key = $this->getMatkul($ps, $kode, $kelas);
+		$key = $this->getKelas($ps, $kode, $kelas);
 		
-		// Create a DOM object
-		$html = new simple_html_dom();
+		// load dpk from six.akademik.itb.ac.id
+		$dataDpk = file('https://six.akademik.itb.ac.id/publik/'.$key);
 		
-		$html->load_file('https://six.akademik.itb.ac.id/publik/'.$key);
+		// menyimpan hasil data total
+		$json_data = array();
 		
-		echo $html;
+		// menyimpan data mahasiswa
+		$tempMhs = array();
+		
+		$iPos = 0;	// text line
+		foreach($dataDpk as $dpk)
+		{
+			$dpk = str_replace(array("\n", "\t", "\r"), '',$dpk);
+            if($iPos == 0){
+                $json_data['fakultas'] = strip_tags($dpk);
+            }else if($iPos == 1){
+                $raw = explode(":",$dpk);
+                $json_data['prodi'] = strip_tags($raw[1]);
+            }else if($iPos == 2){
+                $raw = explode(":",$dpk);
+                $json_data['semester'] = substr(trim(strip_tags($raw[1])),0,1);
+                $json_data['tahun'] = "20".substr(trim(strip_tags($raw[1])),2,2);
+            }else if($iPos == 4){
+                $raw = explode(":",$dpk);
+                $rawKode = explode("/",$raw[1]);
+                $json_data['kode'] = trim(strip_tags($rawKode[0]));
+                $json_data['sks'] = substr(trim(explode(",",$rawKode[1])[1]),0,2);
+                $json_data['mata_kuliah'] = explode(",",$rawKode[1])[0];
+            }else if($iPos == 5){
+                $raw = explode(":",$dpk);
+                $rawKode = explode("/",$raw[1]);
+                $json_data['kelas'] = $rawKode[0];
+                $json_data['dosen'] = $rawKode[1];
+            }
+			
+			// mencari jumlah peserta
+            if(preg_match("/Peserta/",$dpk)){
+                $raw = explode("=",$dpk);
+                $json_data['jumlah_peserta'] = $raw[1];
+            }
+			// mencari data mahasiswa
+            if(is_numeric(substr($dpk,0,3))){
+                $tmparray = array(
+								'nim'=> substr($dpk,4,8),
+								'nama'=>substr($dpk,15)
+							);
+                array_push($tempMhs,$tmparray);
+            }
+            $iPos++;
+		}
+		$json_data['peserta'] = $tempMhs;
+		
+		return $json_data;
 	}
 	
-	public function getMatkul($ps, $kode, $kelas)
+	public function getKelas($ps, $kode, $kelas)
 	{
 		// Create a DOM object
 		$html = new simple_html_dom();
@@ -64,12 +107,6 @@ class Akademik extends REST_Controller {
 					$i=0;
 					foreach($li->find('li') as $child) 
 					{
-						// echo $child->children(0)->plaintext.'<br>';
-						// echo $kelas.'<br>';
-						
-						// $nom[$i] = $child->children(0)->plaintext;
-						// $list[$i] = $child->children(0)->href;
-						
 						if(!strcmp($child->children(0)->plaintext,$kelas))
 						{
 							return $child->children(0)->href;
@@ -77,33 +114,6 @@ class Akademik extends REST_Controller {
 						}
 						$i++;
 					}
-				
-					// $si_text = $li;
-					// //echo $li;
-					
-					// $i=0;
-					// foreach($si_text->find('a') as $element)
-					// {
-						// if($i%2 == 0)
-						// {
-							// $list[$i] = $element->href;
-							// $nom[$i] = $element->plaintext;
-						// }
-						// $i++;
-					// }
-					
-					// for($j=0; $j<=$i; $j++)
-					// {
-						// if($j%2 == 0)
-						// {
-							// if(!strcmp($kelas, $nom[$j]))
-							// {
-								 // echo $nom[$j];
-								 // echo $list[$j];
-								// break;
-							// }
-						// }
-					// }
 
 				}
 			}

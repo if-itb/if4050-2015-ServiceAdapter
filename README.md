@@ -1,27 +1,24 @@
 # README for Service Adapter Assignment on IF4050 2015
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
-
-Each participnats should indicate clearly the following data:
+Data:
  * NIM      = 13512081
  * Name     = Hendro Triokta Brianto
  * GithubID = ndro
 
 Requreiments:
- * ....
- * ....
- * 
+ * Windows Operating System
+ * Web server, ex: Apache XAMPP
+ * CodeIgniter 3.0.1
+ * Library CodeIgniter REST server : https://github.com/chriskacerguis/codeigniter-restserver
 
-How to Deploy
+How to Deploy:
  1. .....
  2. .....
  3. .....
  4. 
  
-How to Run
- 1. .....
- 2. .....
+How to Run:
+ 1. Ketikkan pada web browser, ex: Chrome, http://localhost/six-api-service/api/akademik/dpk/ps/{kode jurusan}/kode/{kode Matkul}/kelas/{kelas}
+	contoh : http://localhost/six-api-service/api/akademik/dpk/ps/101/kode/MA1101/kelas/01
+ 2. Ubah {kode jurusan}, {kode Matkul}, {kelas} sesuai yang diinginkan
  
