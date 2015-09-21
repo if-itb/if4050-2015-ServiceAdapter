@@ -8,7 +8,7 @@
 Each participnats should indicate clearly the following data:
  * NIM      = 13512097
  * Name     = Kevin
- * GithubID = Gejedah
+ * GithubID = gejedah
 
 Requreiments:
  * Install Laravel 5 with composer
