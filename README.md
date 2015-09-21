@@ -13,7 +13,7 @@ Each participnats should indicate clearly the following data:
 Requreiments:
  1. Install nodejs and npm
  2. Install all required package (npm install)
- 3. Install gulp as global library (npm install gulp --global)
+ 3. [OPTIONAL, if wanna use gulp]Install gulp as global library (npm install gulp --global)
 
 How to Deploy
  1. Pull the repo
