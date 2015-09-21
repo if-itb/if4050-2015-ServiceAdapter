@@ -5,7 +5,7 @@
 2. Work on your fork --> commit --> push [as many as you want]
 3. [When you are done OR the deadline] create pull request  
 
-Each participnats should indicate clearly the following data:
+Each participants should indicate clearly the following data:
  * NIM      = 13512084
  * Name     = Choirunnisa Fatima
  * GithubID = ichakid
@@ -20,4 +20,4 @@ How to Deploy
  
 How to Run
  1. Execute `sudo php -S 127.0.0.1:80` on this directory
- 2. Execute GET request to `http://127.0.0.1:80/?ps=135&kode=IF4050&kelas=01`
+ 2. Execute `GET` request to `http://127.0.0.1:80/?ps=135&kode=IF4050&kelas=01`

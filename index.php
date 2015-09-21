@@ -1,48 +1,44 @@
 <?php
 require 'vendor/autoload.php';
-
 include("crawler.php");
 
 // create new Slim instance
 $app = new \Slim\Slim();
+header("Content-Type: application/json");
 
-// add new Route 
-$app->get("/", function () use ($app) {
-    $app->response()->header("Content-Type", "application/json");
-	
-	try {
-		$crawler = new Crawler();
-		$crawler->ps = $app->request()->get('ps');
-		$crawler->kode = $app->request()->get('kode');
-		$crawler->kelas = $app->request()->get('kelas');
+// add route 
+$app->get("/", function () {
+    $app = \Slim\Slim::getInstance();
+	$finder = new Finder();
+	$finder->ps = $app->request()->get('ps');
+	$finder->kode = $app->request()->get('kode');
+	$finder->kelas = $app->request()->get('kelas');
 
-		//wrong request format
-		if (!$crawler->validate()){
-			$app->response->setStatus(400);
-			$body = [
-				"error" => "Request tidak sesuai format"
-			];
-		} else {
-			//success request
-			$body = $crawler->crawling();
-			if ($body !== false) {
-				$app->response->setStatus(200);
-			}
-
-			//`kelas` not found
-			if ($body === false){
-				$app->response->setStatus(404);
-				$body = array[
-					"error" => "Tidak ditemukan kelas dengan kode IF4051"
+	if (!$finder->validate()){//wrong request format
+		$status = 400;
+		$body = [
+			"error" => "Request tidak sesuai format"
+		];
+	} else {//success request
+			if ($finder->find()) {
+				$status = 200;
+				try{
+					$body = $finder->parse();
+				} catch (Exception $e) {
+					$status = 500;
+					$body = [
+						"error" => "Terjadi kesalahan pada server"
+					];
+				}
+			} else {
+				$status = 404;
+				$body = [
+					"error" => "Tidak ditemukan kelas dengan kode " . $finder->kode
 				];
 			}
-		}
-	} catch (\Exception $e) {
-		$app->response->setStatus(500);
-		$body = [
-			"error" => "Terjadi kesalahan pada server"
-		];
 	}
+
+    $app->response()->status($status);
     echo json_encode($body);
 });
 

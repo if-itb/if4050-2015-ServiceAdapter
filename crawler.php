@@ -4,19 +4,16 @@ require 'vendor/autoload.php';
 // It may take a while to crawl a site ... 
 set_time_limit(10000); 
 
-// Include the phpcrawl-mainclass 
-include("libs/PHPCrawler.class.php"); 
-
-// Extend the class and override the handleDocumentInfo()-method  
+// Extend PHPCrawler class and override the handleDocumentInfo()-method  
 class MyCrawler extends PHPCrawler { 
 	public $kode;
 	public $kelas;
 	public $foundDoc = false;
 	
 	function handleDocumentInfo($DocInfo) {	     
-	    // Print if the content of the document was be recieved or not 
 	    if (($DocInfo->received == true) 
-	    	&& ($DocInfo->content_type == "text/html")){	    	
+	    	&& ($DocInfo->content_type == "text/html")){	
+
 	    	// Check if we are already in the "leaf"
 	        if (count($DocInfo->links_found) == 0) {
 	            $url_parts = parse_url($DocInfo->url);
@@ -31,52 +28,43 @@ class MyCrawler extends PHPCrawler {
 	            }
 	        }
 	    }
-    	flush(); 
+    	// flush(); 
 	}  
 }
 
 //Check if the $doc contains $kode and $kelas
 function checking($doc, $kode, $kelas) {
-	$i=1;
 	$separator = PHP_EOL;
 	$found = false;
 	$line = strtok($doc, $separator);
-	while ($line !== false) {
-		$i++;
-		if ($i == 5) {
-			if(strripos($line, $kode, 19) !== false){
-				$found = true;
-			}
-			break; 
-		}
-		$line = strtok($separator);
+	$line = strtok($separator);
+	$line = strtok($separator);
+	$line = strtok($separator);
+	var_dump($line);
+	if(strripos($line, $kode, 17) !== false){
+		$found = true;
 	}
 	$line = strtok($separator);
-	if(strripos($line, $kelas, 18) === false){
+	if(strripos($line, $kelas, 17) === false){
 		$found = false;
 	}
 	return $found;
 } 
 
-class Crawler {
+class Finder {
 	public $ps;
 	public $kode;
 	public $kelas;
 	public $tahun = "2015";
 	public $semester = "1";
 	public $th_kur = "2013";
+	private $doc;
 
 	public function validate() {
-		return (preg_match('([1-3][0-9]{2})', $this->ps) === 1) 
-			&& (preg_match('([A-Za-z]{2}[0-6][0-2][0-9]{2})', 
-				$this->kode) === 1) 
-			&& (preg_match('([0-9]{2})', $this->kelas) === 1));
+		return (!empty($this->ps) && !empty($this->kode) && !empty($this->kelas));
 	}
 
-	public function crawling() {
-		// Now, create a instance of your class, define the behaviour 
-		// of the crawler
-		// and start the crawling-process.  
+	public function find() {
 		$crawler = new MyCrawler();
 
 		// Set paramater
@@ -102,28 +90,32 @@ class Crawler {
 		$crawler->go();
 
 		if ($crawler->foundDoc !== false){
-		// At the end, after the process is finished, 
-		// we parse the document found
-		// then return it as array
-			return $this->parsing($crawler->foundDoc);
+			$this->doc = $crawler->foundDoc;
+			return true;
 		}
 		return false; 
 	} 
 
-	//Parsing doc into array
-	private function parsing($doc) {
+	//Parse doc into array
+	public function parse() {
 		$separator = PHP_EOL;
 		
-		$line = strtok($doc, $separator);
+		$line = strtok($this->doc, $separator);
 		$fakultas = substr($line, 5);
 		
 		$line = strtok($separator);
-		$prodi = substr($line, 17);
+		$prodi = preg_split('/\s:\s/', $line, 2)[1];
 
 		$line = strtok($separator);
 		$line = strtok($separator);
-		$mata_kuliah = preg_split('/\s+/', $line, 6)[5];
-		$sks = 3;
+		$mata_kuliah = preg_split('/\s:\s/', $line, 2)[1];
+
+		$matkul = array();
+		$splits = preg_split('#\s/\s#', $mata_kuliah, 2);
+		$matkul['kode'] = $splits[0];
+		preg_match('#(.*),\s(\d+)\sSKS#', $splits[1], $splits);
+		$matkul['sks'] = $splits[2];
+		$matkul['nama'] = $splits[1];
 
 		$line = strtok($separator);
 		$dosen = preg_split('/\s+/', $line, 6)[5];
@@ -135,7 +127,8 @@ class Crawler {
 
 		$peserta = array();
 		while (($line !== false) && (substr($line, 0, 1) !== "-")) {
-			$mhs = preg_split('/\s+/', $line, 3);
+			$mhs = array();
+			preg_match('#\d+\s+(\d+)\s+(.*)#', $line, $mhs);
 			$peserta[] = [
 				"nim" => $mhs[1],
 				"nama" => $mhs[2]
@@ -144,16 +137,16 @@ class Crawler {
 		}
 
 		$line = strtok($separator);
-		$jumlah_peserta = preg_split('/\s+/', $line, 3)[2];
+		$jumlah_peserta = preg_split('/\s+=\s+/', $line)[1];
 		
 		return [
 			"fakultas" => $fakultas,
 		    "prodi" => $prodi,
 		    "semester" => $this->semester,
 		    "tahun" => $this->tahun,
-		    "kode" => $this->kode,
-		    "mata_kuliah" => $mata_kuliah,
-		    "sks" => $sks,
+		    "kode" => $matkul['kode'],
+		    "mata_kuliah" => $matkul['nama'],
+		    "sks" => $matkul['sks'],
 		    "kelas" => $this->kelas,
 		    "dosen" => $dosen,
 		    "jumlah_peserta" => $jumlah_peserta,
