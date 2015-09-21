@@ -1,9 +1,8 @@
 ## Requirements
  - [GlassFish Server](https://glassfish.java.net/download.html)
+ - [Maven](https://maven.apache.org/download.cgi)
+ - JRE >= 1.7
  - Connection must be within the ITB network or use a vpn to the ITB network
-
-## How to Deploy
-1. 
 
 
 ## How to Run the SOAP Adapter
@@ -18,7 +17,7 @@
 	 $ mvn compile war:war
 	 ```	 
 3. A new folder named `target` will be created inside `six-adapter-soap` folder.  
-It should contain a war file named `six-adapter-soap-1.0-SNAPSHOT.war`  
+Now, it should contain a war file named `six-adapter-soap-1.0-SNAPSHOT.war`  
 4. Run GlassFish server:  
 
      ```
@@ -68,7 +67,7 @@ In my machine, the script looks like:
 	 $ mvn compile war:war
 	 ```	 
 3. A new folder named `target` will be created inside `six-adapter-rest` folder.  
-It should contain a war file named `six-adapter-rest-1.0-SNAPSHOT.war`  
+Now, it should contain a war file named `six-adapter-rest-1.0-SNAPSHOT.war`  
 4. Run GlassFish server using:  
 
      ```
