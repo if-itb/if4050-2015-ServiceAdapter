@@ -60,7 +60,7 @@ app.get('/', function (req, res) {
 									}
 									ret["peserta"] = peserta;
 									found = true;
-									res.send(ret);
+									res.status(200).send(ret);
 								});
 							}
 						});
