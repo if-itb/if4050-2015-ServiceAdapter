@@ -12,7 +12,7 @@
  * Library CodeIgniter REST server : https://github.com/chriskacerguis/codeigniter-restserver
 
 How to Deploy:
- 1. Download folder as Zip https://github.com/ndro/if4050-2015-ServiceAdapter/archive/master.zip atau clone repository ini https://github.com/akhfa/if4050-2015-ServiceAdapter.git
+ 1. Download folder as Zip https://github.com/ndro/if4050-2015-ServiceAdapter/archive/master.zip atau clone repository ini https://github.com/ndro/if4050-2015-ServiceAdapter.git
  2. Simpan pada folder web server Anda
  3. Ubah nama folder sesuai yang diinginkan
  
