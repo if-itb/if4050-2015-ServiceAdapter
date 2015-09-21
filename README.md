@@ -1,11 +1,4 @@
 # README for Service Adapter Assignment on IF4050 2015
-
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
-
-Each participnats should indicate clearly the following data:
  * NIM      = 13512053
  * Name     = Rakhmatullah Yoga Sutrisna
  * GithubID = rakhmatullahyoga
@@ -23,4 +16,21 @@ How to Deploy
 How to Run
  1. Pastikan client berada di lingkungan network ITB
  2. Pada browser atau aplikasi POSTMAN masukkan address "http://localhost:3000/?ps=<kode prodi>&kode=<kode kuliah>&kelas=<nomor kelas>"
- 
+
+Execution Result
+
+ 1. Success response
+
+![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/success.png)
+
+ 2. Request format error
+
+![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/format_error.png)
+
+ 3. Class not found
+
+![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/not_found.png)
+
+ 4. Server error
+
+![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/server_error.png)
