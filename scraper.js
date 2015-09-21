@@ -56,14 +56,11 @@ app.get('/', function(req, res){
 										peserta.nim = item.substr(4,8);
 										peserta.nama = item.substr(15);
 										pesertaArray.push(peserta);
-
 									}
 								})
 
 								result.peserta = pesertaArray;
 								console.log(result);
-
-								// res.status(200).send({ error: 'Something blew up!' });
 								statuscode = 200;
 								callback(result,statuscode);
 
