@@ -2,7 +2,7 @@
 
 ## Requirements:
 Both SOAP & REST adapter require glassfish server:
- - GlassFish Server
+ - [https://glassfish.java.net/download.html](GlassFish Server)
 
 
 ## How to Deploy
