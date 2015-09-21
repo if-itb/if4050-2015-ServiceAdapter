@@ -10,18 +10,19 @@ Each participnats should indicate clearly the following data:
  * Name     = XXXXXXX
  * GithubID = YYYY
 
-Requreiments:
- * ....
- * ....
- * 
+## Requirements:
+Both SOAP & REST adapter require glassfish server:
+ - GlassFish Server
+
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+1. 
  
 How to Run
- 1. .....
- 2. .....
+1. Run GlassFish server using:  
+     
+     ```
+     Users/edmundophie/Downloads/glassfish4full/glassfish/bin/asadmin start-domain --domaindir /Users/edmundophie/Downloads/glassfish4full/glassfish/domains -v domain1         
+     ```
+2. 
  
