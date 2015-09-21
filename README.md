@@ -6,22 +6,20 @@
 3. [When you are done OR the deadline] create pull request  
 
 Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 13512012
+ * Name     = Fahziar Riesad Wutono
+ * GithubID = fahziar
 
 Requreiments:
- * ....
- * ....
- * 
+ * Node JS v0.12.7
+ * You can access akademik.itb.ac.id and view classes (you are connected to ITB's internal network)
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
- 
+ 1. Run npm install to install all dependencies. Note : by default all dependencies already installed.
+
 How to Run
- 1. .....
- 2. .....
+ 1. To start, run command node index
+ 2. You can access service from localhost port 80
+
+See JSON.md for information about request and response format
  
