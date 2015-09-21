@@ -1,5 +1,3 @@
-# README
-
 ## Requirements
  - [GlassFish Server](https://glassfish.java.net/download.html)
 
