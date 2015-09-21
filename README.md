@@ -6,22 +6,16 @@
 3. [When you are done OR the deadline] create pull request  
 
 Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 13512019
+ * Name     = Christ Angga Saputra
+ * GithubID = christangga
 
-Requreiments:
- * ....
- * ....
- * 
+Requirements:
+ * NodeJS
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
- 
+ 1. npm update
+
 How to Run
- 1. .....
- 2. .....
- 
+ 1. Open terminal, type 'npm start'
+ 2. Your web service is ready at http://localhost:8000
