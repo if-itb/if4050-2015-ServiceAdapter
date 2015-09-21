@@ -23,5 +23,5 @@
  2. Ubah {kode jurusan}, {kode Matkul}, {kelas} sesuai yang diinginkan
  
 ###Screenshot
-![Browser Result](screenshoot/dpk1.png "Success Request")
-![Postman Result](screenshoot/dpk_postmen.png "Success Request")
+![Browser Result](screenshot/dpk1.png "Success Request")
+![Postman Result](screenshot/dpk_postmen.png "Success Request")
