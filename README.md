@@ -6,22 +6,20 @@
 3. [When you are done OR the deadline] create pull request  
 
 Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 13511021
+ * Name     = Baharudin Afif S
+ * GithubID = baharudinafif
 
 Requreiments:
- * ....
- * ....
- * 
+ 1. Install nodejs and npm
+ 2. Install all required package (npm install)
+ 3. Install gulp as global library (npm install gulp --global)
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+ 1. Pull the repo
+ 2. execute "gulp" or "node app.js"
  
 How to Run
- 1. .....
- 2. .....
+ 1. open the browser
+ 2. Open this address (http://localhost:8000/api/peserta?ps={ps}&kode={kode}), where {ps} = first 3 character of NIM and {kode} = course code
  
