@@ -117,7 +117,7 @@ class HomeController extends Controller
             if ($final != "Not found"){
                 $found = true;
             }
-            print "ulang kembali ".$iter;
+            // print "ulang kembali ".$iter;
             $iter++;
         }
         return $final;
