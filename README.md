@@ -1,27 +1,21 @@
 # README for Service Adapter Assignment on IF4050 2015
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
-
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 13512080
+ * Name     = Hayyu' Luthfi Hanifah
+ * GithubID = hayyuelha
 
 Requreiments:
- * ....
- * ....
- * 
+ * Maven
+ * Tomcat 7
+ * Java 1.7
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+ 1. Clone this repo
+ 2. `cd` to `adapterdpk`
+ 3. Build the war file: `mvn install`
+ 4. Copy war file to TOMCAT_HOME directory
  
 How to Run
- 1. .....
- 2. .....
+ 1. Test with Postman, base_url: "http://localhost:8080" with 3 parameters: ps (program studi), kode (course code), kelas (class number)
+ 
  
