@@ -5,23 +5,23 @@
 2. Work on your fork --> commit --> push [as many as you want]
 3. [When you are done OR the deadline] create pull request  
 
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+Each participants should indicate clearly the following data:
+ * NIM      = 13512052
+ * Name     = Try Ajitiono
+ * GithubID = Imballinst
 
-Requreiments:
- * ....
- * ....
- * 
+Requirements
+ * Connection to internal ITB Network (direct or indirect, using OpenVPN)
+ * Apache Server or any server that could run PHP script
+ * Internet Browser
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+ 1. Git clone this project to your PHP server directory and you're good to go
  
 How to Run
- 1. .....
- 2. .....
+ 1. Start your PHP server
+ 2. Open your internet browser
+ 3. Type in the address box, <localhost:port>/if4050-2015-ServiceAdapter/?ps=<prodi>&matkul=<kode matkul>&kelas=<kelas>,
+    example localhost/if4050-2015-ServiceAdapter/?ps=135&matkul=IF4050&kelas=01
+ 4. Voila!
  
