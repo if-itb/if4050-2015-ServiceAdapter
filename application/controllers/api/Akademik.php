@@ -22,9 +22,9 @@ class Akademik extends REST_Controller {
 			
 			if($dataDpk)
 			{
-				if(strcmp($dataDpk, 'not found'))
+				if(is_array($dataDpk))
 				{
-					$this->response($dataDpk, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+					 $this->response($dataDpk, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
 				}
 				else
 				{
@@ -50,11 +50,11 @@ class Akademik extends REST_Controller {
 	
 	private function checkFormat($ps, $kode, $kelas)
 	{
-		if($ps)
+		if($ps && (strlen($ps)==3))
 		{
-			if($kode)
+			if($kode && (strlen($kode)==6))
 			{
-				if($kelas)
+				if($kelas && (strlen($kelas)==2))
 				{
 					return true;
 				}
@@ -78,7 +78,7 @@ class Akademik extends REST_Controller {
 	{
 		$key = $this->getKelas($ps, $kode, $kelas);
 		
-		if($key)
+		if(strcmp($key,"not found"))
 		{
 			// load dpk from six.akademik.itb.ac.id
 			$dataDpk = file('https://six.akademik.itb.ac.id/publik/'.$key);
@@ -134,7 +134,7 @@ class Akademik extends REST_Controller {
 			
 			return $json_data;
 		}
-		else
+		else // jika tidak ditemukan
 		{
 			return 'not found';
 		}
@@ -142,6 +142,7 @@ class Akademik extends REST_Controller {
 	
 	public function getKelas($ps, $kode, $kelas)
 	{
+		$nom =  null;
 		// Create a DOM object
 		$html = new simple_html_dom();
 		
@@ -172,13 +173,14 @@ class Akademik extends REST_Controller {
 			}
 		}
 		
-		if(!$nom,$kelas))
+		// mengecek apakah terdapat kelas atau tidak
+		if($nom)
 		{
 			return $link;
 		}
 		else
 		{
-			return 'not found';
+			return "not found";
 		}
 	}
 }
