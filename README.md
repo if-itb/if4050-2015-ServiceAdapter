@@ -1,7 +1,6 @@
-# README for Service Adapter Assignment on IF4050 2015
+# README
 
-## Requirements:
-Both SOAP & REST adapter require glassfish server:
+## Requirements
  - [GlassFish Server](https://glassfish.java.net/download.html)
 
 
