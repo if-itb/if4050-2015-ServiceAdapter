@@ -14,7 +14,7 @@ Requirements:
  * NodeJS
 
 How to Deploy
- 1. npm update
+ 1. Open terminal, type 'npm update'
 
 How to Run
  1. Open terminal, type 'npm start'
