@@ -1,27 +1,19 @@
 # README for Service Adapter Assignment on IF4050 2015
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
-
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 13512005
+ * Name     = Chrestella Stephanie
+ * GithubID = chrestellastephanie
 
 Requreiments:
- * ....
- * ....
- * 
+ * Node JS 4.0.0 
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+ 1. Run server with node scraper.js
+ 2. The server run on port 8000
  
 How to Run
- 1. .....
- 2. .....
- 
+ 1. Create request with this format
+ 	* ps is the study program code
+ 	* kode is the course code
+ 	* kelas is the class number
+ 	* example: http://localhost:8000/?ps=135&kode=IF4050&kelas=01
