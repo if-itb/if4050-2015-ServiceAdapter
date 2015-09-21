@@ -1,0 +1,9 @@
+{
+  "name": "node-api",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^5.0.0-alpha.2",
+    "jquery": "^3.0.0-alpha1",
+    "jsdom": "^6.5.0"
+  }
+}

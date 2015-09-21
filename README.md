@@ -6,22 +6,20 @@
 3. [When you are done OR the deadline] create pull request  
 
 Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 13512024
+ * Name     = Riady Sastra Kusuma
+ * GithubID = riady
 
 Requreiments:
- * ....
- * ....
- * 
+ * Node JS 4.0.0
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+ 1. Install dependencies by execute "npm-install"
+ 2. Run "node server.js". This server run on port 3000
  
 How to Run
- 1. .....
- 2. .....
- 
+ 1. The request will be in form `GET /?queryparams...`. The parameters are:
+    - `ps` is the study program code.
+    - `kode` is the course code.
+    - `kelas` is the class number.
+ 2. The returned value will be JSON containing the class data. If there are some errors, then the response will be error explanation.
