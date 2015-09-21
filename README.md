@@ -1,21 +1,11 @@
 # README for Service Adapter Assignment on IF4050 2015
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
-
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
-
 ## Requirements:
 Both SOAP & REST adapter require glassfish server:
  - GlassFish Server
 
 
-How to Deploy
+## How to Deploy
 1. 
 
 
@@ -31,8 +21,7 @@ In my machine, the script would look like:
      ```
 2. Go to GlassFish admin console at `localhost:4848`
 3. Select `Application` menu in the sidebar
-4. Select `Deploy...` button and point the directory to the exploded war folder in `six-adapter-soap/out/artifacts/six_adapter_soap_war_exploded/
-`
+4. Select `Deploy...` button and point the directory to the exploded war folder in `six-adapter-soap/out/artifacts/six_adapter_soap_war_exploded`
 5. To test the endpoint, you can go to `http://localhost:8080/six_adapter_soap_war_exploded/SixAdapterService?Tester`
  
 ## How to Run the SOAP Client
@@ -66,5 +55,10 @@ In my machine, the script would look like:
      ```
 2. Go to GlassFish admin console at `localhost:4848`
 3. Select `Application` menu in the sidebar
-4. Select `Deploy...` button and point the directory to the exploder war folder in ` six-adapter-rest/out/artifacts/six_adapter_rest_war_exploded/`
+4. Select `Deploy...` button and point the directory to the exploder war folder in ` six-adapter-rest/out/artifacts/six_adapter_rest_war_exploded`
 5. To test the endpoint, you can go to `http://localhost:8080/six_adapter_soap_war_exploded/SixAdapterService?Tester`
+
+## Other
+ * NIM      = 13512095
+ * Name     = Edmund Ophie
+ * GithubID = edmundophie
