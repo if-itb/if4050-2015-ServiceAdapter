@@ -1,27 +1,89 @@
-# README for Service Adapter Assignment on IF4050 2015
+## Requirements
+ - [GlassFish Server](https://glassfish.java.net/download.html)
+ - [Maven](https://maven.apache.org/download.cgi)
+ - JRE >= 1.7
+ - Connection must be within the ITB network or use a vpn to the ITB network
 
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
 
-Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+## How to Run the SOAP Adapter
+1. Move to `six-adapter-soap` directory  
 
-Requreiments:
- * ....
- * ....
- * 
+	 ```
+	 $ cd six-adapter-soap
+	 ```
+2. Build war using maven  
 
-How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+	 ```
+	 $ mvn compile war:war
+	 ```	 
+3. A new folder named `target` will be created inside `six-adapter-soap` folder.  
+Now, it should contain a war file named `six-adapter-soap-1.0-SNAPSHOT.war`  
+4. Run GlassFish server:  
+
+     ```
+     PATH/TO/GLASSFISH/BIN/asadmin start-domain --domaindir /PATH/TO/GLASSFISH/DOMAINS -v [DOMAIN_FOLDER_NAME]
+     ```
+In my machine, the script looks like:
+    ```
+     Users/edmundophie/Downloads/glassfish4full/glassfish/bin/asadmin start-domain --domaindir /Users/edmundophie/Downloads/glassfish4full/glassfish/domains -v domain1
+     ```
+5. Go to GlassFish admin console at `localhost:4848`  
+6. Select `Application` menu in the sidebar  
+7. Select `Deploy...` button and locate the war file that we have just built  
+8. To test the endpoint, you can go to  
+`http://localhost:8080/six-adapter-soap-1.0-SNAPSHOT/SixAdapterService?Tester`  
+ or use the `SOAP Client` program in `six-adapter-soap-client` folder  
+9. WSDL can be viewed at  
+ `http://localhost:8080/six-adapter-soap-1.0-SNAPSHOT/SixAdapterService?wsdl`
  
-How to Run
- 1. .....
- 2. .....
- 
+## How to Run the SOAP Client
+1. Move to `six-adapter-client` directory  
+
+	 ```
+	 $ cd six-adapter-soap-client
+	 ```
+2. Build `jar` using maven `mvn`  
+
+	 ```
+	 $ mvn package
+	 ```
+2. Run `SixClient` from the generated `jar` in `target` folder  
+
+	 ```
+	 $ java -cp target/six-adapter-soap-client-1.0-SNAPSHOT.jar com.edmundophie.client.SixClient
+	 ```
+3. Input your `Kode Prodi`, `Kode Mata Kuliah`, and `Kelas`
+
+
+## How to Run the REST Adapter
+1. Move to `six-adapter-rest` directory  
+
+	 ```
+	 $ cd six-adapter-rest
+	 ```
+2. Build war using maven  
+
+	 ```
+	 $ mvn compile war:war
+	 ```	 
+3. A new folder named `target` will be created inside `six-adapter-rest` folder.  
+Now, it should contain a war file named `six-adapter-rest-1.0-SNAPSHOT.war`  
+4. Run GlassFish server using:  
+
+     ```
+     PATH/TO/GLASSFISH/BIN/asadmin start-domain --domaindir /PATH/TO/GLASSFISH/DOMAINS -v [DOMAIN_FOLDER_NAME]
+     ```
+In my machine, the script would look like:
+    ```
+     Users/edmundophie/Downloads/glassfish4full/glassfish/bin/asadmin start-domain --domaindir /Users/edmundophie/Downloads/glassfish4full/glassfish/domains -v domain1
+     ```
+5. Go to GlassFish admin console at `localhost:4848`
+6. Select `Application` menu in the sidebar
+7. Select `Deploy...` button and locate the war file that we have just built  
+8. To test the endpoint, you can go to  
+`http://localhost:8080/six-adapter-rest-1.0-SNAPSHOT/api/six?ps=[KODE_PRODI]&kode=[KODE_MATA_KULIAH]&kelas=[NO_KELAS]`
+
+## Other
+ * NIM      : 13512095
+ * Name     : Edmund Ophie
+ * GithubID : edmundophie
