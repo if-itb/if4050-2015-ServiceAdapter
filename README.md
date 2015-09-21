@@ -17,10 +17,9 @@ Requreiments:
 
 How to Deploy
  1. Pull the repo
- 2. execute "gulp" or "node app.js"
- 
 How to Run
- 1. open the browser
- 2. Open this address (http://localhost:8000/api/peserta?ps={ps}&kode={kode}&kelas={class}), where {ps} = first 3 character of NIM, {kode} = course code and {class} = class number.
+ 1. Open terminal and execute "gulp" or "node app.js"
+ 2. open the browser
+ 3. Open this address (http://localhost:8000/api/peserta?ps={ps}&kode={kode}&kelas={class}), where {ps} = first 3 character of NIM, {kode} = course code and {class} = class number.
  Example: http://localhost:8000/api/peserta?ps=136&kode=AE4080&kelas=01
  
