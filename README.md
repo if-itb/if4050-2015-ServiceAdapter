@@ -16,3 +16,4 @@ How to Run
  	* ps is the study program code
  	* kode is the course code
  	* kelas is the class number
+ 	* example: http://localhost:8000/?ps=135&kode=IF4050&kelas=01
