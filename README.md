@@ -21,16 +21,16 @@ Execution Result
 
  1. Success response
 
-![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/success.png)
+![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/success.PNG)
 
  2. Request format error
 
-![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/format_error.png)
+![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/format_error.PNG)
 
  3. Class not found
 
-![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/not_found.png)
+![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/not_found.PNG)
 
  4. Server error
 
-![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/server_error.png)
+![](https://raw.githubusercontent.com/rakhmatullahyoga/if4050-2015-ServiceAdapter/master/test/server_error.PNG)
