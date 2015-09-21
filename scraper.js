@@ -10,8 +10,8 @@ app.get('/', function(req, res){
 		kode=req.query.kode,
 		kelas=req.query.kelas,
 		url = "https://six.akademik.itb.ac.id/publik/daftarkelas.php?ps="+ps+"&semester=1&tahun=2015&th_kur=2013";
-	function scraper(callback){
-		if(ps!=null || kode!= null || kelas != null){
+	function scraper(callback, statuscode){
+		if(ps!=null && kode!= null && kelas!=null){
 			request(url, function (error, response, body) {
 				if (!error) {
 					var $ = cheerio.load(body),
@@ -64,14 +64,16 @@ app.get('/', function(req, res){
 								console.log(result);
 
 								// res.status(200).send({ error: 'Something blew up!' });
-								callback(result);
+								statuscode = 200;
+								callback(result,statuscode);
 
 							}
 							else{
 								var result = new Object();
 								result.error = "Terjadi kesalahan pada server"
 								console.log(result);
-								callback(result);
+								statuscode = 500;
+								callback(result,statuscode);
 							}
 						})
 					}else{
@@ -79,14 +81,16 @@ app.get('/', function(req, res){
 						var result = new Object();
 						result.error = "Tidak ditemukan kelas dengan kode " + kode;
 						console.log(result);
-						callback(result);
+						statuscode = 404;
+						callback(result,statuscode);
 					}
 				} else {
 					console.log("We’ve encountered an error: " + error);
 					var result = new Object();
 					result.error = "Terjadi kesalahan pada server";
 					console.log(result);
-					callback(result);
+					statuscode = 500;
+					callback(result,statuscode);
 				}
 
 			});
@@ -95,12 +99,12 @@ app.get('/', function(req, res){
 			var result = new Object();
 			result.error = "Request tidak sesuai format";
 			console.log(result);
-			callback(result);
+			statuscode = 400;
+			callback(result,statuscode);
 		}
 	}
-	scraper(function (result){
-		res.send(result);	
-		// res.send(result);
+	scraper(function (result,statuscode){
+		res.status(statuscode).send(result);	
 	});
 });
 
