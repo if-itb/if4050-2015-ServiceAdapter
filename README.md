@@ -15,7 +15,7 @@ Requreiments:
  * You can access akademik.itb.ac.id and view classes (you are connected to ITB's internal network)
 
 How to Deploy
- 1. Run npm install to install all dependencies
+ 1. Run npm install to install all dependencies. Note : by default all dependencies already installed.
 
 How to Run
  1. To start, run command node index
