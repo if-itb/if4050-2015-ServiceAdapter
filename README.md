@@ -37,14 +37,17 @@ In my machine, the script would look like:
  
 ## How to Run the SOAP Client
 1. Move to `six-adapter-client` directory  
+
 	 ```
 	 cd six-adapter-soap-client
 	 ```
 2. Compile using maven  
+
 	 ```
 	 mvn package
 	 ```
 2. Run `SixClient`  
+
 	 ```
 	 java -cp target/six-adapter-soap-client-1.0-SNAPSHOT.jar com.edmundophie.client.SixClient
 	 ```
