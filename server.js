@@ -27,9 +27,9 @@ apps.get('/', function(req, res){
 
 		var html_res = '';
 
-		https.get(options, function(res){
+		https.get(options, function(r){
 
-			res.on('data',function(d){
+			r.on('data',function(d){
 				html_res += d;
 			}).on('end', function(d){
 				html_res += d;
@@ -65,7 +65,7 @@ apps.get('/', function(req, res){
 									html_res2 += dat;
 								}).on('end',function(dat){
 									html_res2 += dat;
-									$ = cheerio.load(links);
+									$ = cheerio.load(html_res2);
 									var dpk = $('pre').html();
 									var data = parsing_dpk(dpk);
 									if (data.error !== undefined){
