@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Response;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -135,14 +136,14 @@ class HomeController extends Controller
                 $iter++;
             }
             if (!$ada){
-                return response()->json(['error' => $message]);
+                return Response::json(['error' => $message],404);
             }
             else if ($found){
                return $final;
             }
         }
         else{
-            return response()->json(['error' => "Request tidak sesuai format"]);
+            return Response::json(['error' => "Request tidak sesuai format"],400);
         }
     }
 }
