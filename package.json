@@ -1,0 +1,28 @@
+{
+  "name": "serviceadapter",
+  "version": "1.0.0",
+  "description": "Service adapter for DPK",
+  "main": "main.js",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "request": "^2.62.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamat-rahmat/if4050-2015-ServiceAdapter.git"
+  },
+  "keywords": [
+    "service",
+    "DPK"
+  ],
+  "author": "Mamat Rahmat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mamat-rahmat/if4050-2015-ServiceAdapter/issues"
+  },
+  "homepage": "https://github.com/mamat-rahmat/if4050-2015-ServiceAdapter#readme"
+}
