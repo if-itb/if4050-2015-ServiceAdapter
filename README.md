@@ -34,7 +34,7 @@ In my machine, the script looks like:
 8. To test the endpoint, you can go to  
 `http://localhost:8080/six-adapter-soap-1.0-SNAPSHOT/SixAdapterService?Tester`  
  or use the `SOAP Client` program in `six-adapter-soap-client` folder  
-9. WSDL can be viewed at 
+9. WSDL can be viewed at  
  `http://localhost:8080/six-adapter-soap-1.0-SNAPSHOT/SixAdapterService?wsdl`
  
 ## How to Run the SOAP Client
@@ -82,7 +82,7 @@ In my machine, the script would look like:
 6. Select `Application` menu in the sidebar
 7. Select `Deploy...` button and locate the war file that we have just built  
 8. To test the endpoint, you can go to  
-`http://edmunds-macbook-pro.local:8080/six-adapter-rest-1.0-SNAPSHOT/api/six?ps=[KODE_PRODI]&kode=[KODE_MATA_KULIAH]&kelas=[NO_KELAS]`
+`http://localhost:8080/six-adapter-rest-1.0-SNAPSHOT/api/six?ps=[KODE_PRODI]&kode=[KODE_MATA_KULIAH]&kelas=[NO_KELAS]`
 
 ## Other
  * NIM      : 13512095
