@@ -56,7 +56,7 @@ six.get('/', function(req, res){
             			infoMatkul['kelas'] = result[8];
             			infoMatkul['dosen'] = result[9];
             			infoMatkul['jumlahpeserta'] = result[10];
-            			infoMatkul['peserta'] = result[0];
+            			infoMatkul['peserta'] = [];
 
             			//retrieve informasi nama dan nim
             			do {
