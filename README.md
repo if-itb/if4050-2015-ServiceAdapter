@@ -6,22 +6,21 @@
 3. [When you are done OR the deadline] create pull request  
 
 Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 18212024
+ * Name     = Hilman Ramadhan
+ * GithubID = hilmanr
 
-Requreiments:
- * ....
- * ....
- * 
+Requirements:
+ * Tomcat Server
+ * Jax-RS
+ * JSoup
+
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+ 1. Letakkan source file service adapter pada directory Tomcat webapps
  
 How to Run
- 1. .....
- 2. .....
+ 1. Jalankan Tomcat Server
+ 2. Akses Service adapter
+    URL: localhost:8080/service_adapter_18212024_rest_xml/service/main/kode_kuliah=IFXXXX&no_kelas=YY
  
