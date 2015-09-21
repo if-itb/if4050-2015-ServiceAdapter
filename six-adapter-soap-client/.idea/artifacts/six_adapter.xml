@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="six-adapter">
-    <output-path>$PROJECT_DIR$/out/artifacts/six_adapter</output-path>
-    <root id="archive" name="six-adapter.war" />
-  </artifact>
-</component>
