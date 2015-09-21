@@ -18,9 +18,10 @@ Both SOAP & REST adapter require glassfish server:
 How to Deploy
 1. 
  
-How to Run
+## How to Run
 1. Run GlassFish server using:  
 
      Users/edmundophie/Downloads/glassfish4full/glassfish/bin/asadmin start-domain --domaindir /Users/edmundophie/Downloads/glassfish4full/glassfish/domains -v domain1         
+     
 2. 
  
