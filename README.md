@@ -11,17 +11,16 @@ Each participnats should indicate clearly the following data:
  * GithubID = rakhmatullahyoga
 
 Requreiments:
- * ....
- * ....
- * 
+ * Node.js 4.1.0
+ * Express
+ * Request
+ * Cheerio
 
 How to Deploy
- 1. .....
- 2. .....
- 3. .....
- 4. 
+ 1. Install dependency dengan memasukkan perintah "npm install" melalui command prompt pada direktori root project
+ 2. Ketik perintah "npm start" pada command prompt untuk menjalankan server
  
 How to Run
- 1. .....
- 2. .....
+ 1. Pastikan client berada di lingkungan network ITB
+ 2. Pada browser atau aplikasi POSTMAN masukkan address "http://localhost:3000/?ps=<kode prodi>&kode=<kode kuliah>&kelas=<nomor kelas>"
  
