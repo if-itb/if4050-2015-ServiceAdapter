@@ -10,19 +10,19 @@ Both SOAP & REST adapter require glassfish server:
 
 
 ## How to Run the SOAP Adapter
-1. Run GlassFish server using:  
+1. Run GlassFish server:  
 
      ```
      PATH/TO/GLASSFISH/BIN/asadmin start-domain --domaindir /PATH/TO/GLASSFISH/DOMAINS -v [DOMAIN_FOLDER_NAME]
      ```
-In my machine, the script would look like:
+In my machine, the script looks like:
     ```
      Users/edmundophie/Downloads/glassfish4full/glassfish/bin/asadmin start-domain --domaindir /Users/edmundophie/Downloads/glassfish4full/glassfish/domains -v domain1
      ```
 2. Go to GlassFish admin console at `localhost:4848`
 3. Select `Application` menu in the sidebar
 4. Select `Deploy...` button and point the directory to the exploded war folder in `six-adapter-soap/out/artifacts/six_adapter_soap_war_exploded`
-5. To test the endpoint, you can go to `http://localhost:8080/six_adapter_soap_war_exploded/SixAdapterService?Tester`
+5. To test the endpoint, you can go to `http://localhost:8080/six_adapter_soap_war_exploded/SixAdapterService?Tester` or use the `SOAP Client`
  
 ## How to Run the SOAP Client
 1. Move to `six-adapter-client` directory  
