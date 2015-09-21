@@ -18,8 +18,8 @@ app.get('/', function (req, res){
 		result.error = "Request tidak sesuai format";
 		res.status(400).json(result);
 	} else {
-		var url = 'https://six.akademik.itb.ac.id/publik/daftarkelas.php';
-		var param = '?ps='+prodi+'&semester=1&tahun=2015&th_kur=2013';
+		var url = 'https://six.akademik.itb.ac.id/publik/';
+		var param = 'daftarkelas.php?ps='+prodi+'&semester=1&tahun=2015&th_kur=2013';
 
 		request(url + param, function(error, response, html){
 			if(!error && response.statusCode == 200){
@@ -31,6 +31,7 @@ app.get('/', function (req, res){
 						$(this).find('a').each(function(){
 							if($(this).text().substring(0, 2)===kelas){
 								var href = $(this).attr('href');
+								//console.log(url+href);
 								request(url+href, function(error,response,html){
 									$ = cheerio.load(html);
 									text = $('pre').text().split('\n');
@@ -60,6 +61,7 @@ app.get('/', function (req, res){
 
 
 function parse(text){
+	//console.log(text);
 	var result = {};
 	result.fakultas = text[0];
 	result.prodi = text[1].substr(17);
