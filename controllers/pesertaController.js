@@ -11,12 +11,6 @@ var pesertaController = function () {
 
 	//------- FUNCTION ------//
 	var getPeserta = function (req, res) {
-		var output = {
-			task: "Get Peserta",
-			status: "500",
-			message: "Error"
-		}
-
 		if (req.query.ps != undefined && req.query.kode != undefined && req.query.kelas != undefined) {
 			var ps = req.query.ps.toUpperCase();
 			var kode = req.query.kode.toUpperCase();
@@ -48,6 +42,7 @@ module.exports = pesertaController;
 // FUNCTION
 function getDaftarPeserta(url, kode, kelas, res) {
 	var output = {};
+	var rootAddr = "https://six.akademik.itb.ac.id/publik/";
 	request(url, function (error, response, html) {
 		if (!error && response.statusCode == 200) {
 			console.log("berhasil mengakses halaman daftar kelas")
@@ -66,12 +61,10 @@ function getDaftarPeserta(url, kode, kelas, res) {
 					for (var i = 0; i < aLink.length; i++) {
 						if (aLink[i].children[0].data == kelas) {
 							available = 1;
-							linkPesertaKelas = aLink[i].attribs.href;
+							linkPesertaKelas = rootAddr + aLink[i].attribs.href;
 							console.log(matkul)
 							console.log(aLink[i].children[0].data)
 							console.log(linkPesertaKelas);
-							// DUMMY DULU PAKE DATA LOCAL
-							linkPesertaKelas = "http://127.0.0.1/sample/AE4080.html"
 							request(linkPesertaKelas, function (err, response, html) {
 								if (!err && (response.statusCode == 403 || response.statusCode == 200)) {
 									if (response.statusCode == 200) {
@@ -134,12 +127,12 @@ function getDaftarPeserta(url, kode, kelas, res) {
 								} else {
 									output = {
 										task: "Get Daftar Peserta Kelas",
-										kode: kode,
+										kodeKelas: kode,
 										kelas: kelas,
 										status: "Error",
-										message: "Gagal mengakses halaman daftar peserta kelas"
+										message: "Gagal mengakses halaman daftar peserta kelas dengan kode matakuliah " + kode
 									}
-									res.status(200);
+									res.status(404);
 									res.json(output)
 								}
 							})
@@ -152,8 +145,8 @@ function getDaftarPeserta(url, kode, kelas, res) {
 					task: "Get Daftar Peserta Kelas",
 					kode: kode,
 					kelas: kelas,
-					status: "Error",
-					message: "Mata Kuliah/Kelas Tidak Tersedia"
+					status: "Error, Mata Kuliah/Kelas Tidak Tersedia",
+					message: "Gagal mengakses daftar peserta kelas dengan kode matakuliah " + kode
 				}
 				res.status(404);
 				res.json(output)
