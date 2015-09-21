@@ -15,18 +15,18 @@ six.get('/', function(req, res){
 	prodi = req.query.ps;
 	kelas = req.query.kelas;
 
-	url = 'https://six.akademik.itb.ac.id/publik'
+	url = 'https://six.akademik.itb.ac.id/publik/'
 	urlkelas = 'daftarkelas.php?ps='+prodi+'&semester=1&tahun=2015&th_kur=2013'
 
 	request (url+urlkelas,function(error, response, html){
-		if (errror && response.statusCode == 200) {
+		if (!error && response.statusCode == 200) {
 			//masuk ke halaman untuk memilih program studi
 			var $ = cheerio.load(html)				
 			var text = '';
 
 			$('ol').children('li').each(function(index){
 				var text = $(this).contents().filter(function(){
-					return this.nodeType=3;
+					return this.nodeType==3;
 				})[0].nodeValue;
 
 
@@ -39,11 +39,11 @@ six.get('/', function(req, res){
 						text = $('pre').text();
 
 						metadata_regex = /(.*?)\n(?:Program Studi\s\s:\s)(.*)\n(?:Semester\s\s:\s)(.{1})(?:\/)(.*)\n\n(?:Kode\/Mata Kuliah\s:\s)(.{6})(?:\s\/\s)(.*)(?:,)(\s.)(?:\sSKS)\n(?:No\.\sKelas\/Dosen\s\s:\s)(.{2})(?:\s\/\s)(.*)\n\n(?:-----------------------------------------------------------)\n(?:No\.   NIM         NAMA)\n(?:-----------------------------------------------------------)\n(?:.\n*)*\n(?:-----------------------------------------------------------)\n(?:Total\sPeserta\s=\s)(.{2})/g;
-            			studentnim_regex = /([\d]{8})   (.*)/g;
+            			nim_regex = /([\d]{8})   (.*)/g;
 
             			var result = metadata_regex.exec(text);
 
-            			var jsonHeader = {};
+            			var infoMatkul = {};
 
             			//retrieve informasi di header
             			infoMatkul['fakultas'] = result[1];
@@ -60,9 +60,9 @@ six.get('/', function(req, res){
 
             			//retrieve informasi nama dan nim
             			do {
-            				match = studentnim_regex.exec(text);
+            				match = nim_regex.exec(text);
             				if (match){
-            					jsonHeader['peserta'].push({
+            					infoMatkul['peserta'].push({
             						nim:match[1],
             						nama:match[2].trim()
             					});
