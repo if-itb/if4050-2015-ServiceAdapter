@@ -39,17 +39,17 @@ In my machine, the script would look like:
 1. Move to `six-adapter-client` directory  
 
 	 ```
-	 cd six-adapter-soap-client
+	 $ cd six-adapter-soap-client
 	 ```
-2. Compile using maven  
+2. Build using maven  
 
 	 ```
-	 mvn package
+	 $ mvn package
 	 ```
 2. Run `SixClient`  
 
 	 ```
-	 java -cp target/six-adapter-soap-client-1.0-SNAPSHOT.jar com.edmundophie.client.SixClient
+	 $ java -cp target/six-adapter-soap-client-1.0-SNAPSHOT.jar com.edmundophie.client.SixClient
 	 ```
 3. Input your `Kode Prodi`, `Kode Mata Kuliah`, and `Kelas`
 
@@ -66,5 +66,5 @@ In my machine, the script would look like:
      ```
 2. Go to GlassFish admin console at `localhost:4848`
 3. Select `Application` menu in the sidebar
-4. Select `Deploy...` button and point the directory to the exploder war folder in `out/artifacts/six_adapter_war_exploded`
-5. To test the endpoint, you can go to `http://localhost:8080/six_adapter_war_exploded/SixAdapterService?Tester`
+4. Select `Deploy...` button and point the directory to the exploder war folder in ` six-adapter-rest/out/artifacts/six_adapter_rest_war_exploded/`
+5. To test the endpoint, you can go to `http://localhost:8080/six_adapter_soap_war_exploded/SixAdapterService?Tester`
