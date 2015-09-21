@@ -5,6 +5,10 @@ var six = express();
 
 six.set('port', (process.env.PORT || 5000));
 
+six.use(express.static(__dirname + '/public'));
+
+six.set('views', __dirname + '/views');
+six.set('view engine', 'ejs');
 
 six.get('/', function(req, res){
 	kodematkul = req.query.kode;	
