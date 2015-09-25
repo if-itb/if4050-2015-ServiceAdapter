@@ -1,0 +1,21 @@
+{
+  "name"         : "six-scrapper",
+  "version"      : "0.0.1",
+  "description"  : "SIX Scrapper",
+  "main"         : "index.js",
+  "scripts"      : {
+    "start"      : "node index.js"
+  },
+  "keywords"     : [
+    "six",
+    "scrap"
+  ],
+  "author"       : "Christ Angga Saputra",
+  "license"      : "",
+  "dependencies" : {
+    "express"    : "latest",
+    "request"    : "latest",
+    "cheerio"    : "latest",
+    "async"      : "latest"
+  }
+}
