@@ -6,14 +6,17 @@
 3. [When you are done OR the deadline] create pull request  
 
 Each participnats should indicate clearly the following data:
- * NIM      = 1[35|82]+XXYYY
- * Name     = XXXXXXX
- * GithubID = YYYY
+ * NIM      = 13512097
+ * Name     = Kevin
+ * GithubID = gejedah
 
 Requreiments:
- * ....
- * ....
- * 
+ * Install Laravel 5 with composer
+ * Install Goutee (composer require fabpot/goutte from terminal)
+ * Install DomCrawler (composer require symfony/dom-crawler from terminal)
+ * Internal network ITB or using VPN from Outside
+ * Web Server (Apache or Nginx)
+ * Web-browser
 
 How to Deploy
  1. .....
@@ -22,6 +25,6 @@ How to Deploy
  4. 
  
 How to Run
- 1. .....
- 2. .....
+ 1. php artisan serve
+ 2. Open web browser and go to url localhost:8000/home
  
