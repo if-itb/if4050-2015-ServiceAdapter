@@ -1,14 +1,4 @@
-# README for Service Adapter Assignment on IF4050 2015
-
-##Instruction
-1. Fork this repository https://github.com/if-itb/if4050-2015-ServiceAdapter.git
-2. Work on your fork --> commit --> push [as many as you want]
-3. [When you are done OR the deadline] create pull request  
-
-Each participnats should indicate clearly the following data:
- * NIM      = 13512075
- * Name     = Rafi Ramadhan
- * GithubID = rafi-isakh
+# Academic Web Scripting
 
 Requirements:
  * Windows Operating System
